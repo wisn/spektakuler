@@ -67,6 +67,8 @@ $router->group(['prefix' => 'nama-modul'], function () use ($router) {
 Kamu sudah dapat memprogram sekarang.
 Jangan lupa untuk membaca dokumentasi Lumen.
 
+**Catatan**: Jangan lupa untuk membuat _branch_ baru khusus untuk modul kamu.
+
 ## License
 
 Lisensi menggunakan [The MIT License](LICENSE).
