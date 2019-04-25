@@ -9,17 +9,14 @@
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
+
+require_once __DIR__ . '/api.php';
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'hr'], function () use ($router) {
-    $router->group(['namespace' => 'HumanResource'], function () use ($router) {
-        $router->get('/', [
-            'as' => 'HumanResourceIndex',
-            'uses' => 'ExampleController@index',
-        ]);
-    });
+$router->group(['prefix' => 'api'], function () use ($router) {
+    apiRouter($router);
 });

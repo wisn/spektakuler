@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\HumanResource;
+namespace App\Http\Controllers\Api\V1\HumanResource;
 
 class ExampleController extends Controller
 {
@@ -10,6 +10,6 @@ class ExampleController extends Controller
 
     public function index()
     {
-      return 'HumanResource\ExampleController@index';
+      return 'Api\V1\HumanResource\ExampleController@index';
     }
 }

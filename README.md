@@ -18,31 +18,36 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 
 ```
 app/Http/Controllers
-├── Controller.php
-├── ExampleController.php
-└── HumanResource
-    ├── Controller.php
-    └── ExampleController.php
+├── Api
+│   ├── Controller.php
+│   └── V1
+│       ├── Controller.php
+│       └── HumanResource
+│           ├── Controller.php
+│           └── ExampleController.php
+└── Controller.php
 ```
+
+**Catatan**: Kita menggunakan _versioning_ dengan versi awal `v1`.
 
 Untuk setiap modul membuat _directory_ khusus sesuai dengan nama modul kamu.
 Misalnya Student Management, kamu buat _directory_ baru di
-`app/Http/Controllers` dengan nama `StudentManagement`.
+`app/Http/Controllers/Api/V1` dengan nama `StudentManagement`.
 Kamu bisa menyalin _directory_ `HumanResource` menjadi `StudentManagement`.
 Selanjutnya kamu ubah sedikit isi dari berkas-berkas yang telah disalin.
 
-Pada berkas `app/Http/Controllers/StudentManagement/Controller.php`,
+Pada berkas `app/Http/Api/V1/Controllers/StudentManagement/Controller.php`,
 ubah semua `HumanResource` menjadi `StudentManagement` sehingga penampakannya
 akan terlihat seperti di bawah.
 
 ```php
 <?php
 
-namespace App\Http\Controllers\StudentManagement;
+namespace App\Http\Controllers\Api\V1\StudentManagement;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
+use Laravel\Lumen\Routing\Controller as StudentManagementController;
 
-class Controller extends BaseController
+class Controller extends StudentManagementController
 {
 }
 ```
@@ -51,7 +56,7 @@ Selanjutnya kamu dapat membuat _controller_ baru. Sebagai referensi, kamu
 dapat melihat isi dari `ExampleController.php`.
 
 Setelah selesai, tambahkan modul kamu di _router_.
-Buka berkas `routes/web.php`, tambahkan baris berikut.
+Buka berkas `routes/api/v1/modul.php`, tambahkan baris berikut.
 
 ```php
 $router->group(['prefix' => 'nama-modul'], function () use ($router) {
