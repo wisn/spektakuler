@@ -14,6 +14,8 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 
 **Catatan**: Kamu bisa menggunakan XAMPP untuk paket Apache, MySQL, dan PHP.
 
+**PERINGATAN**: Jangan _push_ kode kamu ke _master branch_!
+
 ## Struktur Proyek
 
 ```
