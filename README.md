@@ -4,9 +4,10 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 
 ## Spesifikasi
 
-* PHP >= 7.2.17
-* MySQL >= 5.7
-* Composer >= 1.8.5
+* PHP ~= 7.2.17
+* MySQL ~= 5.7
+* Composer ~= 1.8.5
+* Lumen ~= 5.8
 
 ## Panduan Pemasangan
 
@@ -24,63 +25,73 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 
 ## Struktur Proyek
 
+### Routes
+
+```
+routes
+├── api
+│   ├── v1
+│   │   ├── alumni.php
+│   │   ├── asrama.php
+│   │   ├── helpdesk.php
+│   │   ├── hr.php
+│   │   ├── lac.php
+│   │   ├── logistik.php
+│   │   ├── openlib.php
+│   │   ├── ppm.php
+│   │   └── sm.php
+│   └── v1.php
+├── api.php
+└── web.php
+```
+
+Sunting _routes_ sesuai dengan modul yang sedang kamu kerjakan.
+**Jangan sentuh _routes_ lain selain bagian modul kamu**!
+Apabila kamu mengerjakan bagian modul **asrama**, kamu hanya boleh mengubah berkas
+`routes/api/v1/asrama.php` saja.
+
+### Controllers
+
 ```
 app/Http/Controllers
 ├── Api
 │   ├── Controller.php
 │   └── V1
+│       ├── Alumni
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── Asrama
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
 │       ├── Controller.php
-│       └── HumanResource
+│       ├── Helpdesk
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── HumanResource
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── LanguageCenter
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── Logistik
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── OpenLibrary
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       ├── Ppm
+│       │   ├── Controller.php
+│       │   └── ExampleController.php
+│       └── StudentManagement
 │           ├── Controller.php
 │           └── ExampleController.php
 └── Controller.php
 ```
 
-**Catatan**: Kita menggunakan _versioning_ dengan versi awal `v1`.
-
-Untuk setiap modul membuat _directory_ khusus sesuai dengan nama modul kamu.
-Misalnya Student Management, kamu buat _directory_ baru di
-`app/Http/Controllers/Api/V1` dengan nama `StudentManagement`.
-Kamu bisa menyalin _directory_ `HumanResource` menjadi `StudentManagement`.
-Selanjutnya kamu ubah sedikit isi dari berkas-berkas yang telah disalin.
-
-Pada berkas `app/Http/Api/V1/Controllers/StudentManagement/Controller.php`,
-ubah semua `HumanResource` menjadi `StudentManagement` sehingga penampakannya
-akan terlihat seperti di bawah.
-
-```php
-<?php
-
-namespace App\Http\Controllers\Api\V1\StudentManagement;
-
-use Laravel\Lumen\Routing\Controller as StudentManagementController;
-
-class Controller extends StudentManagementController
-{
-}
-```
-
-Selanjutnya kamu dapat membuat _controller_ baru. Sebagai referensi, kamu
-dapat melihat isi dari `ExampleController.php`.
-
-Setelah selesai, tambahkan modul kamu di _router_.
-Buka berkas `routes/api/v1/modul.php`, tambahkan baris berikut.
-
-```php
-$router->group(['prefix' => 'nama-modul'], function () use ($router) {
-    $router->group(['namespace' => 'NamaModul'], function () use ($router) {
-        $router->get('/', [
-            'as' => 'NamaModulIndex',
-            'uses' => 'NamaController@index',
-        ]);
-    });
-});
-```
-
-Kamu sudah dapat memprogram sekarang.
-Jangan lupa untuk membaca dokumentasi Lumen.
-
-**Catatan**: Jangan lupa untuk membuat _branch_ baru khusus untuk modul kamu.
+Masing-masing modul sudah dibuatkan direktori untuk membuat _controller_ yang dibutuhkan.
+**Jangan sentuh _controller_ modul lain**!
+Kamu boleh menghapus berkas `ExampleController.php` yang ada di direktori modul kamu.
+Hal tersebut sangat disarankan!
 
 ## License
 
