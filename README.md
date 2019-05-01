@@ -93,6 +93,42 @@ Masing-masing modul sudah dibuatkan direktori untuk membuat _controller_ yang di
 Kamu boleh menghapus berkas `ExampleController.php` yang ada di direktori modul kamu.
 Hal tersebut sangat disarankan!
 
+### Migrations
+
+```
+database/migrations
+├── 2019_05_02_004038_<nama migration>_table.php
+└── 2019_05_02_005541_create_cache_table.php
+```
+
+_Migration_ ini digunakan untuk membuat/menghapus _table_ secara otomatis.
+Untuk membuat _migration_ baru, kamu hanya perlu menjalankan perintah
+`php artisan make:migration create_<nama migration kamu>_table.php`.
+Sebagai contoh, apabila kamu mengerjakan modul **asrama** dan ingin membuat _table_
+untuk daftar **gedung**, kamu bisa menjalankan perintah
+`php artisan make:migration create_asrama_gedung_table`.
+Selanjutnya, periksa isi dari _migration_ yang telah dibuat.
+
+Kamu bisa melihat dari contoh yang sudah ada atau baca saja
+[dokumentasinya](https://laravel.com/docs/5.8/migrations).
+
+### Models
+
+```
+app/Models
+└── Helpdesk
+    ├── Complain.php
+    └── User.php
+```
+
+_Model_ disesuaikan dengan _table_ yang kamu buat. Apabila kamu mengerjakan modul
+**asrama** dan telah membuat _table_ **gedung**, kamu dapat membuat direktori baru
+yaitu `app/Models/Asrama` kemudian membuat berkas baru dengan nama `app/Models/Asrama/Gedung.php`.
+Isinya dapat kamu lihat dari contoh yang sudah tersedia atau baca saja
+[dokumentasinya](https://laravel.com/docs/5.8/eloquent).
+Catatan: Dokumentasi Laravel perlu penyesuaian dengan Lumen jadi kamu tidak dapat
+mengikuti contohnya begitu saja.
+
 ## License
 
 Lisensi menggunakan [The MIT License](LICENSE).
