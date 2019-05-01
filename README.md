@@ -2,6 +2,12 @@
 
 Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 
+## Spesifikasi
+
+* PHP >= 7.2.17
+* MySQL >= 5.7
+* Composer >= 1.8.5
+
 ## Panduan Pemasangan
 
 * Pasang _web server_ (contohnya Apache)
