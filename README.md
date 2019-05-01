@@ -129,6 +129,67 @@ Isinya dapat kamu lihat dari contoh yang sudah tersedia atau baca saja
 Catatan: Dokumentasi Laravel perlu penyesuaian dengan Lumen jadi kamu tidak dapat
 mengikuti contohnya begitu saja.
 
+### Branches
+
+```
+  master
+  modul-alumni
+  modul-asrama
+  modul-helpdesk
+  modul-hr
+  modul-lac
+  modul-logistik
+  modul-openlib
+  modul-ppm
+  modul-sm
+  staging
+```
+
+| Nama _Branch_    | Digunakan oleh Kelompok         |
+|------------------|---------------------------------|
+| `modul-alumni`   | Kelompok 9 (Alumni)             |
+| `modul-asrama`   | Kelompok 2 (Asrama)             |
+| `modul-helpdesk` | Kelompok 7 (Helpdesk)           |
+| `modul-hr`       | Kelompok 5 (Human Resource)     |
+| `modul-lac`      | Kelompok 8 (Language Center)    |
+| `modul-logistik` | Kelompok 3 (Logistik)           |
+| `modul-openlib`  | Kelompok 6 (Open Library)       |
+| `modul-ppm`      | Kelompok 1 (PPM)                |
+| `modul-sm`       | Kelompok 4 (Student Management) |
+
+### Branches Khusus
+
+**Master**
+
+_Branch_ **_master_** digunakan sebagai pusat pengembangan.
+Apabila di bagian _branch_ masing-masing modul telah siap untuk beberapa
+fiturnya, kodenya sudah dapat di-_merge_ ke _master_.
+
+**Staging**
+
+_Branch_ ini dikhususkan sebagai pusat _deployment_ menuju _server staging_
+yang telah disediakan yaitu di Heroku. Sumber kode yang akan digunakan
+oleh _branch_ _staging_ adalah dari _branch_ _master_.
+
+## Panduan Mengerjakan
+
+Sebelum melakukan apapun, pastikan kamu pindah ke _branch_ yang telah disediakan.
+Apabila kamu mengerjakan modul **asrama**, pindahkan _working directory_ kamu
+ke _branch_ `modul-asrama` dengan perintah `git checkout modul-asrama`.
+Ganti `asrama` dengan nama modul kamu yang telah diberitahukan di bagian
+[branches](#branches) di atas.
+
+Kemudian, pastikan untuk melakukan `git pull origin master` terlebih dahulu
+agar nantinya tidak terjadi konflik dengan _branch_ kamu.
+
+## Demonstrasi API
+
+Kamu dapat mengunjungi [spektakuler-staging.herokuapp.com][1] untuk melihat
+demonya. Untuk mengakses _endpoint_ tertentu, gunakan URL
+`spektakuler-staging.herokuapp.com/api/v1/<nama modul>/<endpoint>`.
+
+[1]: https://spektakuler-staging.herokuapp.com/
+
 ## License
 
 Lisensi menggunakan [The MIT License](LICENSE).
