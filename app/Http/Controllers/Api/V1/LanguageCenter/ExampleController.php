@@ -10,6 +10,6 @@ class ExampleController extends Controller
 
     public function index()
     {
-      return 'Api\V1\LanguageCenter\ExampleController@index';
+        return 'Api\V1\LanguageCenter\ExampleController@index';
     }
 }
