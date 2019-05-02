@@ -19,4 +19,14 @@ class Gedung extends Model
     {
         return $this->all();
     }
+
+    public function listPutra()
+    {
+        return $this->where('kategori', 'putra')->get();
+    }
+
+    public function listPutri()
+    {
+        return $this->where('kategori', 'putri')->get();
+    }
 }

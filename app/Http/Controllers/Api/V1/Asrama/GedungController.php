@@ -16,6 +16,22 @@ class GedungController extends Controller
         return response()->json([
             'success' => 'true',
             'data' => $this->gedung->list(),
-        ]);
+        ], 200);
+    }
+
+    public function listPutra()
+    {
+        return response()->json([
+            'success' => 'true',
+            'data' => $this->gedung->listPutra(),
+        ], 200);
+    }
+
+    public function listPutri()
+    {
+        return response()->json([
+            'success' => 'true',
+            'data' => $this->gedung->listPutri(),
+        ], 200);
     }
 }

@@ -8,6 +8,10 @@ function AsramaRouter($router) {
 
         $router->group(['prefix' => 'gedung'], function () use ($router) {
             $router->get('/list', 'GedungController@list');
+
+            $router->get('/list/putra', 'GedungController@listPutra');
+
+            $router->get('/list/putri', 'GedungController@listPutri');
         });
     });
 }
