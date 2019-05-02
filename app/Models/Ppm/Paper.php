@@ -18,4 +18,19 @@ class Paper extends Model
         'nip_dosen',
         'id_staff'
     ];
+
+    public function list()
+    {
+        return $this->all();
+    }
+
+    public function listByStatus($status)
+    {
+        return $this->where('status', $status)->get();
+    }
+
+    public function listByEvent($event)
+    {
+        return $this->where('id_event', $event)->get();
+    }
 }

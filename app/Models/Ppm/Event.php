@@ -15,4 +15,9 @@ class Event extends Model
         'start_date',
         'end_date'
     ];
+
+    public function list()
+    {
+        return $this->all();
+    }
 }
