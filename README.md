@@ -14,6 +14,7 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 * Pasang _web server_ (contohnya Apache)
 * Pasang MySQL
 * Pasang [Lumen](https://lumen.laravel.com/docs/5.8/installation)
+* Jalankan perintah `composer install`
 * Salin `.env.example` jadi `.env` kemudian ubah informasi _database_ di sana
 * Jalankan _server_ dengan perintah `php -S localhost:8000 -t public`
 * Buka [localhost:8000](http://localhost:8000/)
