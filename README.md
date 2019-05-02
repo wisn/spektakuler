@@ -14,6 +14,8 @@ Kolaborasi tugas mata kuliah Sistem Informasi IF40-04 Telkom University.
 * Pasang _web server_ (contohnya Apache)
 * Pasang MySQL
 * Pasang [Lumen](https://lumen.laravel.com/docs/5.8/installation)
+* Kalau sudah pasang Lumen, harusnya Composer juga udah dipasang.
+Kalau belum, pasang [Composer](https://getcomposer.org/download/) terlebih dahulu.
 * Jalankan perintah `composer install`
 * Salin `.env.example` jadi `.env` kemudian ubah informasi _database_ di sana
 * Jalankan _server_ dengan perintah `php -S localhost:8000 -t public`
@@ -117,9 +119,15 @@ Kamu bisa melihat dari contoh yang sudah ada atau baca saja
 
 ```
 app/Models
-└── Helpdesk
-    ├── Complain.php
-    └── User.php
+├── Asrama
+│   ├── Gedung.php
+│   └── Kamar.php
+├── Helpdesk
+│   ├── Complain.php
+│   └── User.php
+└── HumanResource
+    ├── Dosen.php
+    └── Fakultas.php
 ```
 
 _Model_ disesuaikan dengan _table_ yang kamu buat. Apabila kamu mengerjakan modul
@@ -129,6 +137,75 @@ Isinya dapat kamu lihat dari contoh yang sudah tersedia atau baca saja
 [dokumentasinya](https://laravel.com/docs/5.8/eloquent).
 Catatan: Dokumentasi Laravel perlu penyesuaian dengan Lumen jadi kamu tidak dapat
 mengikuti contohnya begitu saja.
+
+### Seeding
+
+```
+database/seeds
+├── DatabaseSeeder.php
+├── HrDosenSeeder.php
+└── HrFakultasSeeder.php
+```
+
+_Seeding_ adalah proses dimana kita menambahkan _record_ ke _database_ secara
+langsung tanpa melalui program yang kita bangun.
+Sebut saja _predefined_ _record_ yang sudah kita masukkan dan siap untuk digunakan.
+
+Cara membuatnya cukup jalankan perintah `php artisan make:seeder <nama modul><nama table>Seeder.php`.
+Sebagai contoh, kalau kamu mengerjakan bagian **asrama** dan akan melakukan _seeding_ untuk
+_table_ **gedung**, kamu bisa menjalankan
+`php artisan make:seeder AsramaGedungSeeder`. Selanjutnya kamu bisa buka berkas tersebut di
+`database/seeds/AsramaGedungSeeder.php`. Kamu akan melihat kode seperti di bawah.
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+
+class AsramaGedungSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //
+    }
+}
+```
+
+Untuk bisa melakukan _seeding_, pastikan kamu sudah membuat _model_ (dalam hal ini)
+yaitu `app/Models/Asrama/Gedung.php`. Panggil _model_ tersebut ke _seeder_.
+Kode kamu akan terlihat seperti berikut.
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Asrama\Gedung;
+
+class AsramaGedungSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // Gedung::create([...]);
+    }
+}
+```
+
+Selanjutnya, buka berkas `database/seeds/DatabaseSeeder.php`.
+Tambahkan `AsramaGedungSeeder` di sana.
+Kemudian jalankan perintah `composer dump-autload`.
+Setelah selesai, kamu sudah dapat melakukan _seeding_ dengan perintah
+`php artisan db:seed`.
 
 ### Branches
 
