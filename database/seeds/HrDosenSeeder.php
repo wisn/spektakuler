@@ -25,8 +25,8 @@ class HrDosenSeeder extends Seeder
         ]);
         Dosen::create([
             'nip_dosen' => '1234538',
-            'kodedosen' => 'ABC',
-            'nama' => 'Ay Be Si',
+            'kodedosen' => 'ABD',
+            'nama' => 'Ay Be Di',
             'alamat' => 'Jl. Telekomunikasi',
             'ttl' => 'Bandung, 1 Mei 1990',
             'nohp' => 123456789,

@@ -23,7 +23,8 @@ class CreateAsramaGedungTable extends Migration
                 ->default('putra');
             $table->integer('kapasitas')
                 ->nullable(false);
-            $table->string('lokasi');
+            $table->string('lokasi')
+                ->nullable(true);
             $table->timestamps();
 
             $table->index(['nama']);
