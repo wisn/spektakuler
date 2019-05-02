@@ -14,4 +14,9 @@ class Gedung extends Model
         'kapasitas',
         'lokasi',
     ];
+
+    public function list()
+    {
+        return $this->all();
+    }
 }

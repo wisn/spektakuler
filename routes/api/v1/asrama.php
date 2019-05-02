@@ -5,5 +5,9 @@ function AsramaRouter($router) {
         $router->get('/', function () use ($router) {
             return 'AsramaRouter';
         });
+
+        $router->group(['prefix' => 'gedung'], function () use ($router) {
+            $router->get('/list', 'GedungController@list');
+        });
     });
 }
