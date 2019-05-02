@@ -223,17 +223,17 @@ Setelah selesai, kamu sudah dapat melakukan _seeding_ dengan perintah
   staging
 ```
 
-| Nama _Branch_    | Digunakan oleh Kelompok         |
-|------------------|---------------------------------|
-| `modul-alumni`   | Kelompok 9 (Alumni)             |
-| `modul-asrama`   | Kelompok 2 (Asrama)             |
-| `modul-helpdesk` | Kelompok 7 (Helpdesk)           |
-| `modul-hr`       | Kelompok 5 (Human Resource)     |
-| `modul-lac`      | Kelompok 8 (Language Center)    |
-| `modul-logistik` | Kelompok 3 (Logistik)           |
-| `modul-openlib`  | Kelompok 6 (Open Library)       |
-| `modul-ppm`      | Kelompok 1 (PPM)                |
-| `modul-sm`       | Kelompok 4 (Student Management) |
+| Nama _Branch_    | Digunakan oleh Kelompok         | Owner           |
+|------------------|---------------------------------|-----------------|
+| `modul-alumni`   | Kelompok 9 (Alumni)             | @badrus123      |
+| `modul-asrama`   | Kelompok 2 (Asrama)             | @wisn           |
+| `modul-helpdesk` | Kelompok 7 (Helpdesk)           | @bintangperyoga |
+| `modul-hr`       | Kelompok 5 (Human Resource)     | @ghinadya       |
+| `modul-lac`      | Kelompok 8 (Language Center)    | @Ghalistan      |
+| `modul-logistik` | Kelompok 3 (Logistik)           | @riskach        |
+| `modul-openlib`  | Kelompok 6 (Open Library)       | @aupnurzaman    |
+| `modul-ppm`      | Kelompok 1 (PPM)                | @rizkiar00      |
+| `modul-sm`       | Kelompok 4 (Student Management) | @Mozarella      |
 
 ### Branches Khusus
 
