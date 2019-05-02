@@ -15,7 +15,7 @@ class CreateHrDosenTable extends Migration
     {
         Schema::create('hr_dosen', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nip_dosen',8)->unique();
+            $table->string('nip_dosen', 8)->unique();
             $table->string('kodedosen', 3);
             $table->string('nama', 50);
             $table->string('alamat', 100);

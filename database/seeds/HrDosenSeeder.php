@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Dosen;
+use App\Models\HumanResource\Dosen;
 
 class HrDosenSeeder extends Seeder
 {

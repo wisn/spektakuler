@@ -15,7 +15,7 @@ class CreateHrFakultasTable extends Migration
     {
         Schema::create('hr_fakultas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_fakultas',4)->unique();
+            $table->string('id_fakultas', 4)->unique();
             $table->string('nama_fakultas', 100);
             $table->timestamps();
         });

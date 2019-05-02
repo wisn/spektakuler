@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Fakultas;
+use App\Models\HumanResource\Fakultas;
 
 class HrFakultasSeeder extends Seeder
 {
