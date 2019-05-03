@@ -21,10 +21,7 @@ class CreateSmMahasiswaTable extends Migration
                 ->nullable(false);
             $table->integer('angkatan')
                 ->nullable(false);
-            $table->set('fakultas', [
-                    'FIF',
-                    'FTE',
-                ])
+            $table->set('fakultas', ['FIF', 'FTE'])
                 ->nullable(false);
             $table->string('program_studi', 50)
                 ->nullable(false);
