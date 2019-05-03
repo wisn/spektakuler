@@ -58,23 +58,25 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function update($nama, Request $request) {
-        $gedung = $this->gedung->where('nama', $nama)->limit(1)->get();
-        $isExists = count($gedung) == 1;
+    public function update($nim, Request $request) {
+        $mahasiswa = $this->mahasiswa->where('nim', $nim)->limit(1)->get();
+        $isExists = count($mahasiswa) == 1;
 
         if ($isExists) {
-            $gedung = $gedung[0];
-            $kategori = $request->input('kategori') ?: $gedung['kategori'];
-            $kapasitas = $request->input('kapasitas') ?: $gedung['kapasitas'];
-            $lokasi = $request->input('lokasi') ?: $gedung['lokasi'];
+            $mahasiswa = $mahasiswa[0];
+            $nama = $request->input('nama') ?: $mahasiswa['nama'];
+            $angkatan = $request->input('angkatan') ?: $mahasiswa['angkatan'];
+            $fakultas = $request->input('fakultas') ?: $mahasiswa['fakultas'];
+            $program_studi = $request->input('program_studi') ?: $mahasiswa['program_studi'];
+            $alamat = $request->input('alamat') ?: $mahasiswa['alamat'];
 
-            if ($kategori == null || $kapasitas == null) {
+            if ($nama == null || $angkatan == null || $fakultas == null || $program_studi == null || $alamat == null) {
                 return response()->json([
                     'success' => 'false',
                     'message' => 'One of the required attributes were empty',
                 ], 400);
             } else {
-                if (!($this->isValidKategori($kategori)) || $kapasitas < 1) {
+                if ($fakultas != 'FIF' && $fakultas != 'FTE') {
                     return response()->json([
                         'success' => 'false',
                         'message' => 'Bad inputs for several attributes',
@@ -82,11 +84,12 @@ class MahasiswaController extends Controller
                 } else {       
                     $data = [
                         'nama' => $nama,
-                        'kategori' => $kategori,
-                        'kapasitas' => $kapasitas,
-                        'lokasi' => $lokasi,
+                        'angkatan' => $angkatan,
+                        'fakultas' => $fakultas,
+                        'program_studi' => $program_studi,
+                        'alamat' => $alamat,
                     ];
-                    $this->gedung->where('nama', $nama)->update($data);
+                    $this->mahasiswa->where('nim', $nim)->update($data);
 
                     return response()->json([
                         'success' => 'true',

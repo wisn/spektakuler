@@ -6,6 +6,10 @@ function studentManagementRouter($router) {
             $router->get('/list', 'MahasiswaController@list');
 
             $router->post('/new', 'MahasiswaController@new');
+
+            $router->put('/{nim}/update', 'MahasiswaController@update');
+
+            $router->delete('/{nim}/remove', 'MahasiswaController@remove');
         });
     });
 }
