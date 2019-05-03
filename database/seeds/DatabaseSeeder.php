@@ -14,5 +14,11 @@ class DatabaseSeeder extends Seeder
         $this->call('HrDosenSeeder');
         $this->call('HrFakultasSeeder');
         $this->call('AsramaGedungSeeder');
+        $this->call('PpmEventsSeeder');
+        $this->call('PpmPapersSeeder');
+        $this->call('PpmSubwritersSeeder');
+        $this->call('PpmStaffsSeeder');
+        $this->call('PpmEvaluatorsSeeder');
+        $this->call('PpmReviewsSeeder');
     }
 }
