@@ -37,36 +37,84 @@ class GedungController extends Controller
     }
 
     public function new(Request $request) {
-      $nama = $request->input('nama');
-      $kategori = $request->input('kategori');
-      $kapasitas = $request->input('kapasitas');
-      $lokasi = $request->input('lokasi');
+        $nama = $request->input('nama');
+        $kategori = $request->input('kategori');
+        $kapasitas = $request->input('kapasitas');
+        $lokasi = $request->input('lokasi');
 
-      if ($nama == null || $kategori == null || $kapasitas == null) {
-          return response()->json([
-              'success' => 'false',
-              'message' => 'One of the required attributes were empty',
-          ], 400);
-      } else {
-          if (($kategori != 'putra' && $kategori != 'putri') || $kapasitas < 1) {
-              return response()->json([
-                  'success' => 'false',
-                  'message' => 'Bad inputs for several attributes',
-              ], 400);
-          } else {
-              $data = [
-                  'nama' => $nama,
-                  'kategori' => $kategori,
-                  'kapasitas' => $kapasitas,
-                  'lokasi' => $lokasi,
-              ];
-              $this->gedung->new($data);
+        if ($nama == null || $kategori == null || $kapasitas == null) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'One of the required attributes were empty',
+            ], 400);
+        } else {
+            if (!($this->isValidKategori($kategori)) || $kapasitas < 1) {
+                return response()->json([
+                    'success' => 'false',
+                    'message' => 'Bad inputs for several attributes',
+                ], 400);
+            } else {
+                $data = [
+                    'nama' => $nama,
+                    'kategori' => $kategori,
+                    'kapasitas' => $kapasitas,
+                    'lokasi' => $lokasi,
+                ];
+                $this->gedung->new($data);
 
-              return response()->json([
-                  'success' => 'true',
-                  'data' => $data,
-              ], 201);
-          }
-      }
+                return response()->json([
+                    'success' => 'true',
+                    'data' => $data,
+                ], 201);
+            }
+        }
+    }
+
+    public function update($nama, Request $request) {
+        $gedung = $this->gedung->where('nama', $nama)->limit(1)->get();
+        $isExists = count($gedung) == 1;
+        $gedung = $gedung[0];
+
+        if ($isExists) {
+            $kategori = $request->input('kategori') ?: $gedung['kategori'];
+            $kapasitas = $request->input('kapasitas') ?: $gedung['kapasitas'];
+            $lokasi = $request->input('lokasi') ?: $gedung['lokasi'];
+
+            if ($kategori == null || $kapasitas == null) {
+                return response()->json([
+                    'success' => 'false',
+                    'message' => 'One of the required attributes were empty',
+                ], 400);
+            } else {
+                if (!($this->isValidKategori($kategori)) || $kapasitas < 1) {
+                    return response()->json([
+                        'success' => 'false',
+                        'message' => 'Bad inputs for several attributes',
+                    ], 400);
+                } else {       
+                    $data = [
+                        'nama' => $nama,
+                        'kategori' => $kategori,
+                        'kapasitas' => $kapasitas,
+                        'lokasi' => $lokasi,
+                    ];
+                    $this->gedung->where('nama', $nama)->update($data);
+
+                    return response()->json([
+                        'success' => 'true',
+                        'data' => $data,
+                    ], 200);
+                }
+            }
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Record not found',
+            ], 404);
+        }
+    }
+
+    private function isValidKategori($kategori) {
+        return $kategori == 'putra' || $kategori == 'putri';
     }
 }
