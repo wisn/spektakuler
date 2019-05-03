@@ -114,6 +114,20 @@ class GedungController extends Controller
         }
     }
 
+    public function remove($nama) {
+        $success = $this->gedung->remove($nama);
+        if ($success) {
+            return response()->json([
+              'success' => 'true',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed removing record',
+            ], 500);
+        }
+    }
+
     private function isValidKategori($kategori) {
         return $kategori == 'putra' || $kategori == 'putri';
     }

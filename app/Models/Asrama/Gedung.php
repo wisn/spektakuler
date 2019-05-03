@@ -38,4 +38,14 @@ class Gedung extends Model
 
         $this->save();
     }
+
+    public function remove($nama) {
+        $isExists = $this->where('nama', $nama)->limit(1)->count() == 1;
+
+        if ($isExists) {
+            return $this->where('nama', $nama)->delete();
+        }
+
+        return false;
+    }
 }

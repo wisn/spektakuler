@@ -16,6 +16,8 @@ function AsramaRouter($router) {
             $router->post('/new', 'GedungController@new');
 
             $router->put('/{nama}/update', 'GedungController@update');
+
+            $router->delete('/{nama}/remove', 'GedungController@remove');
         });
     });
 }
