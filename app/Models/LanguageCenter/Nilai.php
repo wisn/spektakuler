@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\LanguangeCenter;
+namespace App\Models\LanguageCenter;
 
 use Illuminate\Database\Eloquent\Model;
 
