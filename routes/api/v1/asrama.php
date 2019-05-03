@@ -19,5 +19,17 @@ function AsramaRouter($router) {
 
             $router->delete('/{nama}/remove', 'GedungController@remove');
         });
+
+        $router->group(['prefix' => 'kamar'], function () use ($router) {
+            $router->get('/list', 'KamarController@list');
+
+            $router->get('/list/available', 'KamarController@listAvailable');
+
+            $router->post('/new', 'KamarController@new');
+
+            $router->put('/{id_kamar}/update', 'KamarController@update');
+
+            $router->delete('/{id_kamar}/remove', 'KamarController@remove');
+        });
     });
 }

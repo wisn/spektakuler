@@ -73,9 +73,9 @@ class GedungController extends Controller
     public function update($nama, Request $request) {
         $gedung = $this->gedung->where('nama', $nama)->limit(1)->get();
         $isExists = count($gedung) == 1;
-        $gedung = $gedung[0];
 
         if ($isExists) {
+            $gedung = $gedung[0];
             $kategori = $request->input('kategori') ?: $gedung['kategori'];
             $kapasitas = $request->input('kapasitas') ?: $gedung['kapasitas'];
             $lokasi = $request->input('lokasi') ?: $gedung['lokasi'];

@@ -48,4 +48,8 @@ class Gedung extends Model
 
         return false;
     }
+
+    public function findByNama($nama) {
+        return $this->where('nama', $nama)->get();
+    }
 }

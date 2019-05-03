@@ -18,11 +18,14 @@ class CreateAsramaKamarTable extends Migration
                 ->unsigned();
             $table->integer('no_kamar')
                 ->nullable(false);
-            $table->integer('id_gedung')
-                ->nullable(false)
-                ->unsigned();
+            $table->string('nama_gedung', 2)
+                ->nullable(false);
             $table->integer('kapasitas')
                 ->nullable(false)
+                ->unsigned();
+            $table->integer('tersisa')
+                ->nullable(false)
+                ->default(0)
                 ->unsigned();
             $table->timestamps();
 
@@ -30,8 +33,8 @@ class CreateAsramaKamarTable extends Migration
         });
 
         Schema::table('asrama_kamar', function (Blueprint $table) {
-            $table->foreign('id_gedung')
-                ->references('id_gedung')
+            $table->foreign('nama_gedung')
+                ->references('nama')
                 ->on('asrama_gedung');
         });
     }
