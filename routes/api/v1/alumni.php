@@ -2,8 +2,8 @@
 
 function alumniRouter($router) {
     $router->group(['namespace' => 'Alumni'], function () use ($router) {
-        $router->get('/', function () use ($router) {
-            return 'AlumniRouter';
+        $router->group(['prefix' => 'Alumni'], function () use ($router) {
+            $router->get('/ShowAlumni', 'AlumniController@index');
         });
     });
 }
