@@ -28,7 +28,7 @@ class CreateAsramaGedungTable extends Migration
             $table->timestamps();
 
             $table->index(['nama']);
-            $table->unique(['nama', 'lokasi']);
+            $table->unique(['nama']);
         });
     }
 
