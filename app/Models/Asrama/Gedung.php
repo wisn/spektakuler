@@ -29,4 +29,13 @@ class Gedung extends Model
     {
         return $this->where('kategori', 'putri')->get();
     }
+
+    public function new($data) {
+        $this->nama = $data['nama'];
+        $this->kategori = $data['kategori'];
+        $this->kapasitas = $data['kapasitas'];
+        $this->lokasi = $data['lokasi'];
+
+        $this->save();
+    }
 }

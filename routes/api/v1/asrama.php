@@ -12,6 +12,8 @@ function AsramaRouter($router) {
             $router->get('/list/putra', 'GedungController@listPutra');
 
             $router->get('/list/putri', 'GedungController@listPutri');
+
+            $router->post('/new', 'GedungController@new');
         });
     });
 }
