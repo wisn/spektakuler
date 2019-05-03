@@ -9,7 +9,7 @@ class NilaiController extends Controller
 {
   public function __construct()
   {
-      $this->gedung = new Gedung;
+      $this->nilai = new Nilai;
   }
 
   public function list()

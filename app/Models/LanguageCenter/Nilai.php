@@ -4,7 +4,7 @@ namespace App\Models\LanguangeCenter;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gedung extends Model
+class Nilai extends Model
 {
     protected $table = 'lac_nilai';
 
