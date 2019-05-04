@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call('PpmEvaluatorsSeeder');
         $this->call('PpmReviewsSeeder');
         $this->call('LACMahasiswaSeeder');
+        $this->call('LACDosenSeeder');
     }
 }

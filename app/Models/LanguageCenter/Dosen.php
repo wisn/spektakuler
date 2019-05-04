@@ -4,12 +4,12 @@ namespace App\Models\LanguageCenter;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mahasiswa extends Model
+class Dosen extends Model
 {
-    protected $table = 'lac_mahasiswa';
-    protected $primaryKey = 'NIM';
+    protected $table = 'lac_dosen';
+    protected $primaryKey = 'NIP';
     protected $fillable = [
-        'NIM',
+        'NIP',
         'Nama'
     ];
     public $timestamps = false;
