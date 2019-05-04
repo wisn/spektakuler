@@ -13,4 +13,8 @@ class Mahasiswa extends Model
         'Nama'
     ];
     public $timestamps = false;
+
+    public function getMahasiswa() {
+        return $this->all();
+    }
 }

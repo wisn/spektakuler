@@ -12,12 +12,9 @@ class NilaiController extends Controller
       $this->nilai = new Nilai;
   }
 
-  public function list()
+  public function getNilai()
   {
-      return response()->json([
-          'success' => 'true',
-          'data' => $this->nilai->listNilai(),
-      ], 200);
+      return response()->json($this->nilai->listNilai(), 200);
   }
 
   public function new(Request $request) {
