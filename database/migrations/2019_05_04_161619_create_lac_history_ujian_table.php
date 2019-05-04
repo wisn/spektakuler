@@ -24,7 +24,7 @@ class CreateLacHistoryUjianTable extends Migration
             $table->string('Ruangan');
             $table->boolean('Status_Pembayaran');
             $table->boolean('Status_Persetujuan');
-            $table->string('Jenis_Hstory');
+            $table->string('Jenis_History');
         });
     }
 

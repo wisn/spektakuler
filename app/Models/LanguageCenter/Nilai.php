@@ -9,12 +9,17 @@ class Nilai extends Model
     protected $table = 'lac_nilai';
 
     protected $fillable = [
-        'nama',
-        'tipe_tes',
-        'tipe_peserta',
-        'ruangan',
-        'nilai'
+        'Tgl_Test',
+        'Tipe_Test',
+        'NIM',
+        'Nama',
+        'Tipe_Peserta',
+        'Ruangan',
+        'Nilai_Total',
+        'Jenis_Nilai'
     ];
+
+    public $timestamps = false;
 
     public function listNilai()
     {

@@ -14,7 +14,7 @@ class CreateLacRuanganTable extends Migration
     public function up()
     {
         Schema::create('lac_ruangan', function (Blueprint $table) {
-            $table->string('No_Ruangan', 10)->unique();
+            $table->string('Kode_Ruangan', 10)->unique();
             $table->integer('Kapasitas');
         });
     }

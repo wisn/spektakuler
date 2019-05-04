@@ -21,7 +21,7 @@ class CreateLacNilaiTable extends Migration
         $table->string('Nama');
         $table->string('Tipe_Peserta');
         $table->string('Ruangan');
-        $table->string('Nilai_Total');
+        $table->integer('Nilai_Total');
         $table->string('Jenis_Nilai');
       });
 
