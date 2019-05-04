@@ -14,7 +14,26 @@ class Mahasiswa extends Model
     ];
     public $timestamps = false;
 
-    public function getMahasiswa() {
+    public function getAll() {
         return $this->all();
+    }
+
+    public function getMahasiswa($nim) {
+        return $this->where('NIM', $nim)->get();
+    }
+
+    public function addMahasiswa($nim, $nama) {
+        return $this->insert([
+            'NIM' => $nim,
+            'Nama' => $nama
+        ]);
+    }
+
+    public function editMahasiswa($nim, $nama) {
+        return $this->where('NIM', $nim)->update(['Nama' => $nama]);
+    }
+
+    public function deleteMahasiswa($nim) {
+        return $this->where('NIM', $nim)->delete();
     }
 }

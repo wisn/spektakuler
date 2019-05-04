@@ -13,17 +13,17 @@ class LACDosenSeeder extends Seeder
     public function run()
     {
         Dosen::create([
-            'NIP' => '0000000001',
+            'NIP' => '1000000001',
             'Nama' => 'Si Bapak A'
         ]);
 
         Dosen::create([
-            'NIP' => '0000000002',
+            'NIP' => '1000000002',
             'Nama' => 'Si Bapak B'
         ]);
 
         Dosen::create([
-            'NIP' => '0000000003',
+            'NIP' => '1000000003',
             'Nama' => 'Si Bapak C'
         ]);
     }
