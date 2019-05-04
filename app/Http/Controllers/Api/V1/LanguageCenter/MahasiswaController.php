@@ -25,7 +25,7 @@ class MahasiswaController extends Controller {
         return response()->json($this->Mahasiswa->editMahasiswa($nim, $nama), 200);
     }
 
-    public function deleteMahasiswa($nim, $nama) {
+    public function deleteMahasiswa($nim) {
         return response()->json($this->Mahasiswa->deleteMahasiswa($nim), 200);
     }
 }

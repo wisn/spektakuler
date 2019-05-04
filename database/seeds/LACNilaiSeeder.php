@@ -21,7 +21,7 @@ class LACNilaiSeeder extends Seeder
             'Tipe_Peserta' => 'Mahasiswa',
             'Ruangan' => 'A101',
             'Nilai_Total' => 4,
-            'Jenis_Nilai' => 'Test' 
+            'Jenis_Nilai' => 'Internal' 
         ]);
 
         Nilai::create([
@@ -32,7 +32,7 @@ class LACNilaiSeeder extends Seeder
             'Tipe_Peserta' => 'Mahasiswa',
             'Ruangan' => 'A101',
             'Nilai_Total' => 503,
-            'Jenis_Nilai' => 'Test' 
+            'Jenis_Nilai' => 'Internal' 
         ]);
     }
 }

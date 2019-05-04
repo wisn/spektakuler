@@ -20,4 +20,32 @@ class HistoryUjian extends Model
         'Jenis_History'
     ];
     public $timestamps = false;
+
+    public function getAll() {
+        return $this->all();
+    }
+
+    public function getHistory($id) {
+        return $this->where('id', $id)->get();
+    }
+
+    public function getHistoryNIM($NIM) {
+        return $this->where('NIM', $NIM)->get();
+    }
+
+    public function addHistory($object) {
+        return $this->insert($object);
+    }
+
+    public function editHistory($id, $status_bayar, $status_setuju) {
+        return $this->where('id', $id)
+        ->update([
+            'Status_Pembayaran' => $status_bayar,
+            'Status_Persetujuan' => $status_setuju
+            ]);
+    }
+
+    public function deleteHistory($id) {
+        return $this->where('id', $id)->delete();
+    }
 }

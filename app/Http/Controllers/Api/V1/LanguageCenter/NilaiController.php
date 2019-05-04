@@ -2,41 +2,34 @@
 
 namespace App\Http\Controllers\Api\V1\LanguageCenter;
 
-use Illuminate\Http\Request;
 use App\Models\LanguageCenter\Nilai;
 
-class NilaiController extends Controller
-{
-  public function __construct()
-  {
-      $this->nilai = new Nilai;
-  }
+class NilaiController extends Controller {
+    public function __construct() {
+        $this->Nilai = new Nilai;
+    }
 
-  public function getNilai()
-  {
-      return response()->json($this->nilai->listNilai(), 200);
-  }
+    public function getAllNilai() {
+        return response()->json($this->Nilai->getAll(), 200);
+    }
 
-  public function new(Request $request) {
-    $nama = $request->input('nama');
-    $tipe_tes = $request->input('tipe_tes');
-    $tipe_peserta = $request->input('tipe_peserta');
-    $ruangan = $request->input('ruangan');
-    $nilai = $request->input('nilai');
+    public function getNilai($id) {
+        return response()->json($this->Nilai->getNilai($id), 200);
+    }
 
-    $data = [
-      'nama'=>$nama,
-      'tipe_tes'=>$tipe_tes,
-      'tipe_peserta'=>$tipe_peserta,
-      'ruangan'=>$ruangan,
-      'nilai'=>$nilai
-    ];
+    public function getNilaiNIM($nim) {
+      return response()->json($this->Nilai->getNilai($nim), 200);
+    }
 
-    $this->nilai->new($data);
+    public function addNilai($tgl, $tipe, $nim, $nama, $tipe_peserta, $ruangan, $nilai_total, $jenis_nilai) {
+        return response()->json($this->Nilai->addNilai($tgl, $tipe, $nim, $nama, $tipe_peserta, $ruangan, $nilai_total, $jenis_nilai), 200);
+    }
 
-    return response()->json([
-        'success' => 'true',
-        'data' => $data,
-    ], 201);
-  }
+    public function editNilai($nim, $nama) {
+        return response()->json($this->Nilai->editNilai($nim, $nama), 200);
+    }
+
+    public function deleteNilai($nim) {
+        return response()->json($this->Nilai->deleteNilai($nim), 200);
+    }
 }

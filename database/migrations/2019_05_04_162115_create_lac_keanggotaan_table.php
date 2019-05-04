@@ -14,8 +14,7 @@ class CreateLacKeanggotaanTable extends Migration
     public function up()
     {
         Schema::create('lac_keanggotaan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('NIM', 10);
+            $table->string('NIM', 10)->unique();
             $table->string('Nama');
             $table->string('status');
             $table->date('expire');

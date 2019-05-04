@@ -21,18 +21,36 @@ class Nilai extends Model
 
     public $timestamps = false;
 
-    public function listNilai()
-    {
-      return $this->all();
+    public function getAll() {
+        return $this->all();
     }
 
-    public function new($data) {
-        $this->nama = $data['nama'];
-        $this->tipe_tes = $data['tipe_tes'];
-        $this->tipe_peserta = $data['tipe_peserta'];
-        $this->ruangan = $data['ruangan'];
-        $this->nilai = $data['nilai'];
+    public function getNilai($id) {
+        return $this->where('id', $id)->get();
+    }
 
-        $this->save();
+    public function getNilaiNIM($NIM) {
+        return $this->where('NIM', $NIM)->get();
+    }
+
+    public function addNilai($tgl, $tipe, $nim, $nama, $tipe_peserta, $ruangan, $nilai_total, $jenis_nilai) {
+        return $this->insert([
+            'Tgl_Test' => $tgl,
+            'Tipe_Test' => $tipe,
+            'NIM' => $nim,
+            'Nama' => $nama,
+            'Tipe_Peserta' => $tipe_peserta,
+            'Ruangan' => $ruangan,
+            'Nilai_Total' => $nilai_total,
+            'Jenis_Nilai' => $jenis_nilai
+        ]);
+    }
+
+    public function editNilai($id, $nilai_total) {
+        return $this->where('id', $id)->update(['Nilai_Total' => $nilai_total]);
+    }
+
+    public function deleteNilai($id) {
+        return $this->where('id', $id)->delete();
     }
 }
