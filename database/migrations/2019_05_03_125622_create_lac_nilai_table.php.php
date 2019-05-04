@@ -14,22 +14,15 @@ class CreateLacNilaiTable extends Migration
     public function up()
     {
       Schema::create('lac_nilai', function (Blueprint $table) {
-        $table->integer('id_nilai', true, true)
-              ->unsigned();
-          $table->integer('nim')
-              ->nullable(false);
-          $table->string('nama')
-              ->nullable(false);
-          $table->set('tipe_tes', ['EPrT', 'ECCT'])
-              ->nullable(false)
-              ->default('EPrT');
-          $table->string('tipe_peserta')
-              ->nullable(false);
-          $table->string('ruangan')
-              ->nullable(false);
-          $table->integer('nilai')
-              ->unsigned();
-          $table->timestamps();
+        $table->bigIncrements('Id');
+        $table->date('Tgl_Test');
+        $table->string('Tipe_Test');
+        $table->string('NIM', 10);
+        $table->string('Nama');
+        $table->string('Tipe_Peserta');
+        $table->string('Ruangan');
+        $table->string('Nilai_Total');
+        $table->string('Jenis_Nilai');
       });
 
       // Cannot foreign table with table 'akun' because table 'akun' hasn't created yet
