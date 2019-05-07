@@ -20,5 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call('PpmStaffsSeeder');
         $this->call('PpmEvaluatorsSeeder');
         $this->call('PpmReviewsSeeder');
+        $this->call('LACMahasiswaSeeder');
+        $this->call('LACDosenSeeder');
+        $this->call('LACRuanganSeeder');
+        $this->call('LACListUjianSeeder');
+        $this->call('LACHistoryUjianSeeder');
+        $this->call('LACKeanggotaanSeeder');
+        $this->call('LACNilaiSeeder');
     }
 }
