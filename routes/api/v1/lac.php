@@ -31,7 +31,7 @@ function languageCenterRouter($router) {
     $router->group(['prefix' => 'ruangan'], function() use ($router) {
       $router->get('/', function() {
         return 'This is LaC Ruangan';
-      });
+      }); 
       $router->get('getAll', 'RuanganController@getAllRuangan');
       $router->get('get/{noruang}', 'RuanganController@getRuangan');
       $router->get('add/{noruang}/{kapasitas}', 'RuanganController@addRuangan');
@@ -64,7 +64,7 @@ function languageCenterRouter($router) {
 
     $router->group(['prefix' => 'listujian'], function() use ($router) {
       $router->get('/', function() {
-        return 'This is LaC Keanggotaan';
+        return 'This is LaC list Ujian';
       });
       $router->get('getAll', 'ListUjianController@getAllListUjian');
       $router->get('get/{id}', 'ListUjianController@getListUjian');
@@ -80,7 +80,7 @@ function languageCenterRouter($router) {
       $router->get('getAll', 'NilaiController@getAllNilai');
       $router->get('get/{id}', 'NilaiController@getNilai');
       $router->get('getNIM/{NIM}', 'NilaiController@getNilaiNIM');
-      $router->get('add/{tgl_test}/{tipe}/{NIM}/{Nama}/{tipe}/{Ruangan}/{Nilai_Total}/{Jenis_Nilai}', 'NilaiController@addNilai');
+      $router->get('add/{tgl_test}/{tipe}/{NIM}/{Nama}/{peserta}/{Ruangan}/{Nilai_Total}/{Jenis_Nilai}', 'NilaiController@addNilai');
       $router->get('edit/{id}/{Nilai_Total}', 'NilaiController@editNilai');
       $router->get('delete/{id}', 'NilaiController@deleteNilai');
     });
