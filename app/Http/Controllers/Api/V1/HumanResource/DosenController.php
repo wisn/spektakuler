@@ -1,6 +1,7 @@
-// Dosen Controller
 <?php
 
+
+// Dosen Controller
 namespace App\Http\Controllers\Api\V1\HumanResource;
 
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use App\Models\HumanResource\Dosen;
 class DosenController extends Controller
 {
 
-  public function __contruct()
+  public function __construct()
   {
     // code...
     $this->dosen= new Dosen;
@@ -19,7 +20,7 @@ class DosenController extends Controller
 
   public function index()
   {
-    return rensponse()->json([
+    return response()->json([
       'success' =>'true',
       'data'=> $this->dosen->listDosen(),
     ],200);
@@ -32,7 +33,7 @@ class DosenController extends Controller
     ], 200);
   }
 
-  public function newAlumni(Request $request){
+  public function newDosen(Request $request){
     $nip_dosen = $request->input('nip_dosen');
     $kodedosen = $request->input('kodedosen');
     $nama = $request->input('nama');
@@ -68,36 +69,42 @@ class DosenController extends Controller
   }
 
   public function updateDosen($nip_dosen, Request $request){
-    $nip_dosen = $request->input('nip_dosen');
-    $kodedosen = $request->input('kodedosen');
-    $nama = $request->input('nama');
-    $alamat =$request->input('alamat');
-    $ttl = $request->input('ttl');
-    $nohp = $request->input('nohp');
-    $gaji =$request->input('gaji');
-    $id_fakultas = $request->input('id_fakultas');
+    $dosen = $this->dosen->where('nip_dosen', $nip_dosen)->limit(1)->get();
+    $isExists = count($dosen) == 1;
 
-    if ($nip_dosen == null || $kodedosen == null ){
-      return response()->json([
-        'success' =>'false',
-        'message' => 'One of the required attributes were empty',
-      ], 400);
-    }else{
-      $data = [
-        'nip_dosen' => $nip_dosen,
-        'kodedosen' => $kodedosen,
-        'nama' => $nama,
-        'alamat' => $alamat,
-        'ttl' => $ttl,
-        'nohp' => $nohp,
-        'gaji' => $gaji,
-        'id_fakultas' => $id_fakultas,
-      ];
-      $this->dosen->where('nip_dosen', $nip_dosen)->update($data);
-      return response()->json([
-        'success'=>true,
-        'data'=>$data,
-      ], 200);
+    if ($isExists) {
+      $dosen = $dosen[0];
+
+      $kodedosen = $request->input('kodedosen') ?: $dosen['kodedosen'];
+      $nama = $request->input('nama') ?: $dosen['nama'];
+      $alamat =$request->input('alamat') ?: $dosen['alamat'];
+      $ttl = $request->input('ttl') ?: $dosen['ttl'];
+      $nohp = $request->input('nohp') ?: $dosen['nohp'];
+      $gaji =$request->input('gaji') ?: $dosen['gaji'];
+      $id_fakultas = $request->input('id_fakultas') ?: $dosen['id_fakultas'];
+
+      if ($nip_dosen == null || $kodedosen == null){
+        return response()->json([
+          'success' =>'false',
+          'message' => 'One of the required attributes were empty',
+        ], 400);
+      }else{
+        $data = [
+          'nip_dosen' => $nip_dosen,
+          'kodedosen' => $kodedosen,
+          'nama' => $nama,
+          'alamat' => $alamat,
+          'ttl' => $ttl,
+          'nohp' => $nohp,
+          'gaji' => $gaji,
+          'id_fakultas' => $id_fakultas,
+        ];
+        $this->dosen->where('nip_dosen', $nip_dosen)->update($data);
+        return response()->json([
+          'success'=>true,
+          'data'=>$data,
+        ], 200);
+      }
     }
   }
 
