@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\HumanResource;
+namespace App\Models\HumanResource;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,4 +44,3 @@ class Dosen extends Model
         return false;
     }
 }
-
