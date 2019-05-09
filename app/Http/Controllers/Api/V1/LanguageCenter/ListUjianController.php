@@ -18,11 +18,11 @@ class ListUjianController extends Controller {
     }
 
     public function addListUjian($nama, $tipe, $biaya) {
-        return response()->json($this->ListUjian->addListUjian($nim, $nama, $tipe, $biaya), 200);
+        return response()->json($this->ListUjian->addListUjian($nama, $tipe, $biaya), 200);
     }
 
-    public function editListUjian($nama, $tipe, $biaya) {
-        return response()->json($this->ListUjian->editListUjian($nama, $tipe, $biaya), 200);
+    public function editListUjian($id, $nama, $tipe, $biaya) {
+        return response()->json($this->ListUjian->editListUjian($id, $nama, $tipe, $biaya), 200);
     }
 
     public function deleteListUjian($id) {

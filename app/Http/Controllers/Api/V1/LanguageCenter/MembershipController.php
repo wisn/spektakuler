@@ -18,11 +18,11 @@ class MembershipController extends Controller {
     }
 
     public function addMembership($nim, $nama, $status, $expire, $pembayaran) {
-        return response()->json($this->Keanggotaan->addKeanggotaan($nim, $nama), 200);
+        return response()->json($this->Keanggotaan->addKeanggotaan($nim, $nama, $status, $expire, $pembayaran), 200);
     }
 
     public function editMembership($nim, $status, $expire, $pembayaran) {
-        return response()->json($this->Keanggotaan->editKeanggotaan($nim, $nama), 200);
+        return response()->json($this->Keanggotaan->editKeanggotaan($nim, $status, $expire, $pembayaran), 200);
     }
 
     public function deleteMembership($nim) {

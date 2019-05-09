@@ -18,7 +18,7 @@ class HistoryController extends Controller {
     }
 
     public function getHistoryNIM($NIM) {
-        return response()->json($this->History->getHistory($NIM), 200);
+        return response()->json($this->History->getHistoryNIM($NIM), 200);
     }
 
     public function addHistory($NIM, $Nama, $tgl_test, $tgl_daftar, $tipe_test, $tipe_peserta, $ruangan, $status_bayar, $status_setuju) {
@@ -37,10 +37,10 @@ class HistoryController extends Controller {
     }
 
     public function editHistory($id, $status_bayar, $status_setuju) {
-        return response()->json($this->History->editHistory($noruang, $status_bayar, $status_setuju), 200);
+        return response()->json($this->History->editHistory($id, $status_bayar, $status_setuju), 200);
     }
 
     public function deleteHistory($id) {
-        return response()->json($this->History->deleteHistory($noruang), 200);
+        return response()->json($this->History->deleteHistory($id), 200);
     }
 }
