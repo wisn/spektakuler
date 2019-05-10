@@ -13,7 +13,7 @@ class Fakultas extends Model
         'nama_fakultas',
     ];
 
-	public function list()
+	public function listFakultas()
 	{
 		return $this->all();
 	}	

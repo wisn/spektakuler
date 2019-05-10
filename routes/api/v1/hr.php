@@ -9,5 +9,9 @@ function humanResourceRouter($router) {
             $router->put('/{nip_dosen}/updateDosen', 'DosenController@updateDosen');
             $router->delete('/{nip_dosen}/removeDosen', 'DosenController@removeDosen');
         });
+    	$router->group(['prefix' => 'Fakultas'], function () use ($router) {
+    		$router->get('/ShowFakultas','FakultasController@index');
+        });        
+
     });
 }

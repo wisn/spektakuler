@@ -12,5 +12,8 @@ class Fakultas extends Model
         'id_fakultas',
         'nama_fakultas',
     ];
-    
+    public function listFakultas()
+    {
+        return $this->all();
+    }    
 }
