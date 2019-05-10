@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Staff;
+use App\Models\HumanResource\Staff;
 
 class HrStaffSeeder extends Seeder
 {
@@ -23,6 +23,15 @@ class HrStaffSeeder extends Seeder
         	'gaji' => 900000,
         	'id_fakultas' => 'FIF',	
         ]);
-
+        Staff::create([
+            'nip_staff' => '98711679',
+            'jenis_staff' => 'Logistik',
+            'nama' => 'Ay Be De Fe',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456669,
+            'gaji' => 900000,
+            'id_fakultas' => 'FIF', 
+        ]);
     }
 }
