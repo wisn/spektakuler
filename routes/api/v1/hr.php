@@ -19,5 +19,9 @@ function humanResourceRouter($router) {
             $router->put('/{nip_staff}/updateStaff', 'StaffController@updateDosen');
             $router->delete('/{nip_staff}/removeStaff', 'StaffController@removeStaff');
         });
+        $router->group(['prefix' => 'Admin'], function () use ($router) {
+            $router->get('/ShowDosen','AdminController@ShowDosen');
+            $router->get('/ShowStaff','AdminController@ShowStaff');
+        });           
     });
 }
