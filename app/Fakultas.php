@@ -12,4 +12,5 @@ class Fakultas extends Model
         'id_fakultas',
         'nama_fakultas',
     ];
+    
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\HumanResource;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +15,7 @@ class Fakultas extends Model
 
 	public function list()
 	{
-		return $this->all()
+		return $this->all();
 	}	
 	
 }
