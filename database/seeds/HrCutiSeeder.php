@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Cuti;
+use App\Models\HumanResource\Cuti;
 
 class HrCutiSeeder extends Seeder
 {
@@ -16,8 +16,16 @@ class HrCutiSeeder extends Seeder
         Cuti::create([
         	'id_cuti' => '123',
         	'jeniscuti' => 'hamil',
-        	'rentangtanggal' =>'2019-05-03', 
+        	'rentangtanggal' =>'2019-06-13',
+            'status' => 'not approved',
+            'nip_dosen' => '12345678',
         ]);
-
+        Cuti::create([
+            'id_cuti' => '124',
+            'jeniscuti' => 'hamil',
+            'rentangtanggal' =>'2019-06-13',
+            'status' => 'not approved',
+            'nip_staff' => '98711678',
+        ]);
     }
 }

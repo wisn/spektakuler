@@ -15,13 +15,20 @@ function humanResourceRouter($router) {
         $router->group(['prefix' => 'Staff'], function () use ($router) {
             $router->get('/ShowStaff', 'StaffController@index');
             $router->get('/Show/{nip_staff}', 'StaffController@findStaff');
-            $router->post('/newStaff', 'StaffController@newDosen');
-            $router->put('/{nip_staff}/updateStaff', 'StaffController@updateDosen');
+            $router->post('/newStaff', 'StaffController@newStaff');
+            $router->put('/{nip_staff}/updateStaff', 'StaffController@updateStaff');
             $router->delete('/{nip_staff}/removeStaff', 'StaffController@removeStaff');
         });
         $router->group(['prefix' => 'Admin'], function () use ($router) {
             $router->get('/ShowDosen','AdminController@ShowDosen');
             $router->get('/ShowStaff','AdminController@ShowStaff');
-        });           
+            $router->get('/FindDosen/{nip_dosen}', 'AdminController@findDosen');
+            $router->get('/FindStaff/{nip_staff}', 'AdminController@findStaff');
+            $router->post('/newDosen', 'AdminController@newDosen');
+            $router->post('/newStaff', 'AdminController@newStaff');                              
+        });
+        $router->group(['prefix' => 'Cuti'], function () use ($router) {
+            $router->get('/ShowCuti','CutiController@index');
+        });                     
     });
 }

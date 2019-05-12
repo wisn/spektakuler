@@ -121,7 +121,6 @@ class DosenController extends Controller
             ], 500);
         }
     }
-
 }
 
 

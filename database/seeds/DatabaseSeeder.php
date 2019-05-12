@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call('HrFakultasSeeder');
         $this->call('HrStaffSeeder');
         $this->call('HrAdminSeeder');
+        $this->call('HrCutiSeeder');
     }
 }

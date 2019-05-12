@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Admin;
+use App\Models\HumanResource\Admin;
 
 class HrAdminSeeder extends Seeder
 {

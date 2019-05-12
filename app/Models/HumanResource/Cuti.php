@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\HumanResource;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,5 +12,12 @@ class Cuti extends Model
         'id_cuti',
         'jeniscuti',
         'rentangtanggal',
+        'status',
+        'nip_dosen',
+        'nip_staff',
     ];
+    public function listCuti()
+    {
+        return $this->all();
+    }
 }
