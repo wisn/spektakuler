@@ -15,7 +15,6 @@ class CreateHrCutiTable extends Migration
     {
         Schema::create('hr_cuti', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_cuti',10)->unique();
             $table->string('jeniscuti',20);
             $table->dateTime('rentangtanggal');
             $table->string('status',20);

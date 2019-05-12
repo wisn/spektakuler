@@ -29,6 +29,7 @@ function humanResourceRouter($router) {
         });
         $router->group(['prefix' => 'Cuti'], function () use ($router) {
             $router->get('/ShowCuti','CutiController@index');
+            $router->post('/newCuti', 'CutiController@newCuti');            
         });                     
     });
 }

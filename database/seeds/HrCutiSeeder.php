@@ -14,14 +14,12 @@ class HrCutiSeeder extends Seeder
     public function run()
     {
         Cuti::create([
-        	'id_cuti' => '123',
         	'jeniscuti' => 'hamil',
         	'rentangtanggal' =>'2019-06-13',
             'status' => 'not approved',
             'nip_dosen' => '12345678',
         ]);
         Cuti::create([
-            'id_cuti' => '124',
             'jeniscuti' => 'hamil',
             'rentangtanggal' =>'2019-06-13',
             'status' => 'not approved',
