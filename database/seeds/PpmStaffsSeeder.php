@@ -15,7 +15,7 @@ class PpmStaffsSeeder extends Seeder
         Staff::create([
             'username' => 'rizkiar00',
             'email' => 'rizkiganteng@rocketmail.com',
-            'password' => md5('rizkiganteng'),
+            'password' => password_hash('rizkiganteng', PASSWORD_DEFAULT),
             'name' => 'Rizki Achmad Riyanto'
         ]);
     }

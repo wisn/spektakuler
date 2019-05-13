@@ -15,14 +15,14 @@ class PpmEvaluatorsSeeder extends Seeder
         Evaluator::create([
             'username' => 'asukarizki',
             'email' => 'rqrqrq@rocketmail.com',
-            'password' => md5('12345'),
+            'password' => password_hash('12345', PASSWORD_DEFAULT),
             'name' => 'Muhammad Alfarizky Sunetyo'
         ]);
 
         Evaluator::create([
             'username' => 'ansuci',
             'email' => 'bigsister@rocketmail.com',
-            'password' => md5('abcde'),
+            'password' => password_hash('abcde', PASSWORD_DEFAULT),
             'name' => 'Annisa Suciati Salsabila'
         ]);
     }
