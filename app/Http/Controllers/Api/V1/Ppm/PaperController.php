@@ -57,7 +57,7 @@ class PaperController extends Controller
         if ($title == NULL || $date == NULL || $fund == NULL || $id_event == NULL || $nip_dosen == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
 
@@ -92,7 +92,7 @@ class PaperController extends Controller
         if ($title == NULL || $date == NULL || $fund == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
         

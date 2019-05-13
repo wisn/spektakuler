@@ -38,7 +38,7 @@ class EventController extends Controller
         if ($name == NULL || $description == NULL || $start_date == NULL || $end_date == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
 
@@ -74,7 +74,7 @@ class EventController extends Controller
         if ($name == NULL || $description == NULL || $start_date == NULL || $end_date == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
         

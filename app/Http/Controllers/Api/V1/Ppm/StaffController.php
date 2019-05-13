@@ -30,7 +30,7 @@ class StaffController extends Controller
         if ($username == NULL || $email == NULL || $password == NULL || $name == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
         
@@ -60,14 +60,21 @@ class StaffController extends Controller
     {    
         $staff = $this->staff->get($username);
 
-        $email = $request->input('email');
-        $name = $request->input('name');
-
         if(!$staff) {
             return response()->json([
                 'success' => 'false',
                 'message' => 'Staff can\'t be found'
             ], 404);
+        }
+
+        $email = $request->input('email');
+        $name = $request->input('name');
+
+        if ($email == NULL || $name == NULL) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Empty attribute(s)'
+            ], 400);
         }
 
         if ($this->staff->edit($staff, $email, $name)) {

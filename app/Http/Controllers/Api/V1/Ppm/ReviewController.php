@@ -47,7 +47,7 @@ class ReviewController extends Controller
         if ($review_txt == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
 
@@ -87,7 +87,7 @@ class ReviewController extends Controller
         if ($review_txt == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
         

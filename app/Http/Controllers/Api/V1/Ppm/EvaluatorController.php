@@ -30,7 +30,7 @@ class EvaluatorController extends Controller
         if ($username == NULL || $email == NULL || $password == NULL || $name == NULL) {
             return response()->json([
                 'success' => 'false',
-                'message' => 'Empty attrbiute(s)'
+                'message' => 'Empty attribute(s)'
             ], 400);
         }
         
@@ -59,15 +59,22 @@ class EvaluatorController extends Controller
     public function edit($username, Request $request)
     {    
         $evaluator = $this->evaluator->get($username);
-
-        $email = $request->input('email');
-        $name = $request->input('name');
         
         if (!$evaluator) {
             return response()->json([
                 'success' => 'false',
                 'message' => 'Evaluator can\'t be found'
             ], 404);
+        }
+
+        $email = $request->input('email');
+        $name = $request->input('name');
+
+        if ($email == NULL || $name == NULL) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Empty attribute(s)'
+            ], 400);
         }
         
         if ($this->evaluator->edit($evaluator, $email, $name)) {
@@ -93,7 +100,7 @@ class EvaluatorController extends Controller
                 'message' => 'Evaluator can\'t be found'
             ], 404);
         }
-        
+
         if ($this->evaluator->remove($evaluator)) {
             return response()->json([
                 'success' => 'true',
