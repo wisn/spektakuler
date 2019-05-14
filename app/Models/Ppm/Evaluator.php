@@ -21,6 +21,11 @@ class Evaluator extends Model
         return $this->where('username', $username)->first();
     }
 
+    public function getById($id_evaluator) 
+    {
+        return $this->where('id_evaluator', $id_evaluator)->first();
+    }
+
     public function add($username, $email, $password, $name) 
     {
         $evaluator = new Evaluator;

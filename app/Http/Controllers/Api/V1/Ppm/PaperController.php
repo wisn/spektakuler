@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Api\V1\Ppm;
 
 use App\Models\Ppm\Paper;
+use App\Models\Ppm\Event;
+use App\Models\Ppm\Staff;
+use App\Models\Ppm\Review;
+use App\Models\Ppm\Evaluator;
+use App\Models\Ppm\Subwriter;
 use Illuminate\Http\Request;
 
 class PaperController extends Controller
@@ -10,6 +15,11 @@ class PaperController extends Controller
     public function __construct()
     {
         $this->paper = new Paper;
+        $this->event = new Event;
+        $this->staff = new Staff;
+        $this->review = new Review;
+        $this->evaluator = new Evaluator;
+        $this->subwriter = new Subwriter;
     }
 
     public function list()
@@ -38,10 +48,30 @@ class PaperController extends Controller
 
     public function get($id_paper)
     {
-        return response()->json([
-            'success' => 'true',
-            'data' => $this->paper->get($id_paper)
-        ], 200);
+        $paper = $this->paper->get($id_paper);
+        if (!$paper) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Paper can\'t be found'
+            ], 404);
+        }
+        else {
+            $paper->event = $this->event->get($paper->id_event);
+
+            if ($paper->id_staff) {
+                $paper->staff = $this->staff->getById($paper->id_staff);
+            }
+            
+            $paper->reviews = $this->review->listByPaper($id_paper);
+            foreach ($paper->reviews as $review) {
+                $review->evaluator = $this->evaluator->getById($review->id_evaluator);
+            }
+            $paper->subwriters = $this->subwriter->listByPaper($id_paper);
+            return response()->json([
+                'success' => 'true',
+                'data' => $paper
+            ], 200);
+        }
     }
 
     public function add(Request $request)
@@ -51,6 +81,7 @@ class PaperController extends Controller
         $fund = $request->input('fund');
         $id_event = $request->input('id_event');
         $nip_dosen = $request->input('nip_dosen');
+        $nim_mahasiswa = $request->input('nim_mahasiswa');
 
         $status = 'pending';
 
@@ -60,8 +91,7 @@ class PaperController extends Controller
                 'message' => 'Empty attribute(s)'
             ], 400);
         }
-
-        if ($this->paper->add($title, $date, $fund, $status, $id_event, $nip_dosen)) {
+        if ($this->paper->add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa)) {
             return response()->json([
                 'success' => 'true',
             ], 201);
@@ -109,6 +139,30 @@ class PaperController extends Controller
         }
     }
 
+    public function verify($id_paper, $id_staff)
+    {
+        $paper = $this->paper->get($id_paper);
+
+        if (!$paper) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Paper can\'t be found'
+            ], 404);
+        }
+
+        if ($this->paper->verify($paper, $id_staff)) {
+            return response()->json([
+                'success' => 'true',
+            ], 200);
+        }
+        else {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Failed to verify paper'
+            ], 500);
+        }
+    }
+    
     public function changeStatus($id_paper, Request $request)
     {
         $paper = $this->paper->get($id_paper);

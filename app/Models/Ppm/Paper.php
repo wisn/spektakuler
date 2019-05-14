@@ -3,6 +3,7 @@
 namespace App\Models\Ppm;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Ppm\Subwriter;
 
 class Paper extends Model
 {
@@ -39,7 +40,7 @@ class Paper extends Model
         return $this->where('id_paper', $id_paper)->first();
     }
 
-    public function add($title, $date, $fund, $status, $id_event, $nip_dosen) 
+    public function add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa) 
     {
         $paper = new Paper;
         $paper->title = $title;
@@ -49,7 +50,15 @@ class Paper extends Model
         $paper->id_event = $id_event;
         $paper->nip_dosen = $nip_dosen;
 
-        return $paper->save();
+        $paper->save();
+        
+        if ($nim_mahasiswa) {
+            $subwriter = new Subwriter;
+            foreach ($nim_mahasiswa as $nim_m) {
+                $subwriter->add($paper->id_paper, $nim_m);
+            }
+        }
+        return true;
     }
 
     public function edit(Paper $paper, $title, $date, $fund) 
@@ -58,6 +67,15 @@ class Paper extends Model
         $paper->date = $date;
         $paper->fund = $fund;
 
+        return $paper->save();
+    }
+
+    public function verify(Paper $paper, $id_staff)
+    {
+        if ($paper->status == 'pending') {
+            $paper->id_staff = $id_staff;
+            $paper->status = 'verified';
+        }
         return $paper->save();
     }
 

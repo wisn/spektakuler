@@ -21,6 +21,11 @@ class Staff extends Model
         return $this->where('username', $username)->first();
     }
 
+    public function getById($id_staff) 
+    {
+        return $this->where('id_staff', $id_staff)->first();
+    }
+
     public function add($username, $email, $password, $name) 
     {
         $staff = new Staff;

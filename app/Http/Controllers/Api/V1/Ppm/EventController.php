@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Ppm;
 
 use App\Models\Ppm\Event;
+use App\Models\Ppm\Paper;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -10,6 +11,7 @@ class EventController extends Controller
     public function __construct()
     {
         $this->event = new Event;
+        $this->paper = new Paper;
     }
 
     public function list()
@@ -22,10 +24,20 @@ class EventController extends Controller
 
     public function get($id_event)
     {
-        return response()->json([
-            'success' => 'true',
-            'data' => $this->event->get($id_event)
-        ], 200);
+        $event = $this->event->get($id_event);
+        if (!$event) {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Event can\'t be found'
+            ], 404);
+        }
+        else {
+            $event->papers = $this->paper->listByEvent($id_event);
+            return response()->json([
+                'success' => 'true',
+                'data' => $event
+            ], 200);
+        }
     }
 
     public function add(Request $request)

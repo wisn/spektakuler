@@ -51,7 +51,7 @@ class ReviewController extends Controller
             ], 400);
         }
 
-        if (!$this->evaluator->get($id_evaluator) || !$this->paper->get($id_paper)) {
+        if (!$this->evaluator->getById($id_evaluator) || !$this->paper->get($id_paper)) {
             return response()->json([
                 'success' => 'false',
                 'message' => 'Evaluator and/or paper can\'t be found'
