@@ -48,6 +48,10 @@ class AdminController extends Controller
   {
     return $this->dosenController->findDosen($nip_dosen);
   }
+  public function findDosenbyFakultas($id_fakultas)
+  {
+    return $this->dosenController->findDosenFak($id_fakultas);
+  }
   public function findStaff($nip_staff)
   {
     return $this->staffController->findStaff($nip_staff);

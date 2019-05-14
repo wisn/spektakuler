@@ -6,8 +6,9 @@ function humanResourceRouter($router) {
             $router->get('/ShowDosen', 'DosenController@index');
             $router->get('/Show/{nip_dosen}', 'DosenController@findDosen');
             $router->post('/newDosen', 'DosenController@newDosen');
-            $router->put('/{nip_dosen}/updateDosen', 'DosenController@updateDosen');
-            $router->delete('/{nip_dosen}/removeDosen', 'DosenController@removeDosen');
+            $router->put('/updateDosen/{nip_dosen}', 'DosenController@updateDosen');
+            $router->delete('/removeDosen/{nip_dosen}', 'DosenController@removeDosen');
+            $router->get('/Showbyfakultas/{id_fakultas}', 'DosenController@findDosenFak');
         });
     	$router->group(['prefix' => 'Fakultas'], function () use ($router) {
     		$router->get('/ShowFakultas','FakultasController@index');
@@ -25,11 +26,16 @@ function humanResourceRouter($router) {
             $router->get('/FindDosen/{nip_dosen}', 'AdminController@findDosen');
             $router->get('/FindStaff/{nip_staff}', 'AdminController@findStaff');
             $router->post('/newDosen', 'AdminController@newDosen');
-            $router->post('/newStaff', 'AdminController@newStaff');                              
+            $router->post('/newStaff', 'AdminController@newStaff');
+            $router->get('/Showbyfakultas/{id_fakultas}', 'DosenController@findDosenFak');                              
         });
         $router->group(['prefix' => 'Cuti'], function () use ($router) {
             $router->get('/ShowCuti','CutiController@index');
             $router->post('/newCuti', 'CutiController@newCuti');            
-        });                     
+        });
+        $router->group(['prefix' => 'View'], function () use ($router) {
+             $router->get('/HR', 'ViewController@index'); 
+             $router->get('/HR/{nip_dosen}', 'ViewController@search');
+        });                              
     });
 }

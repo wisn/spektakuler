@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api\V1\HumanResource;
 
 use Illuminate\Http\Request;
 use App\Models\HumanResource\Dosen;
+
 /**
  *
  */
@@ -24,12 +25,19 @@ class DosenController extends Controller
       'success' =>'true',
       'data'=> $this->dosen->listDosen(),
     ],200);
+    
   }
 
   public function findDosen($nip_dosen){
     return response()->json([
       'success' =>'true',
       'data'=> $this->dosen->findbyNIP($nip_dosen),
+    ], 200);
+  }
+  public function findDosenFak($id_fakultas){
+    return response()->json([
+      'success' =>'true',
+      'data'=> $this->dosen->findbyFakultas($id_fakultas),
     ], 200);
   }
 
@@ -120,6 +128,8 @@ class DosenController extends Controller
                 'message' => 'Failed removing record',
             ], 500);
         }
+     
+
     }
 }
 

@@ -15,8 +15,8 @@ class HrDosenSeeder extends Seeder
     {
         Dosen::create([
         	'nip_dosen' => '12345678',
-        	'kodedosen' => 'ABC',
-        	'nama' => 'Ay Be Si',
+        	'kodedosen' => 'ANR',
+        	'nama' => 'Anastasia Rahimah',
         	'alamat' => 'Jl. Telekomunikasi',
         	'ttl' => 'Bandung, 1 Mei 1990',
         	'nohp' => 123456789,
@@ -24,14 +24,94 @@ class HrDosenSeeder extends Seeder
         	'id_fakultas' => 'FIF',	
         ]);
         Dosen::create([
-            'nip_dosen' => '1234538',
-            'kodedosen' => 'ABC',
-            'nama' => 'Ay Be Si',
+            'nip_dosen' => '12345679',
+            'kodedosen' => 'ULW',
+            'nama' => 'Ulya Laksmiwati',
             'alamat' => 'Jl. Telekomunikasi',
             'ttl' => 'Bandung, 1 Mei 1990',
             'nohp' => 123456789,
             'gaji' => 10000000,
             'id_fakultas' => 'FIF', 
         ]);
+        Dosen::create([
+            'nip_dosen' => '12345680',
+            'kodedosen' => 'GPA',
+            'nama' => 'Gabriella Pudjiastuti',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345681',
+            'kodedosen' => 'JUT',
+            'nama' => 'Jaswadi Utama',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345682',
+            'kodedosen' => 'AJL',
+            'nama' => 'Almira Jailani',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345683',
+            'kodedosen' => 'RTH',
+            'nama' => 'Rudi Tarihoran',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345684',
+            'kodedosen' => 'CPS',
+            'nama' => 'Cawuk Padmasari',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345685',
+            'kodedosen' => 'ABC',
+            'nama' => 'Ikin Wastuti',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345686',
+            'kodedosen' => 'ABC',
+            'nama' => 'Elma Riyanti',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345687',
+            'kodedosen' => 'ABC',
+            'nama' => 'Elvin Kusmawati',
+            'alamat' => 'Jl. Telekomunikasi',
+            'ttl' => 'Bandung, 1 Mei 1990',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);                                                           
     }
 }

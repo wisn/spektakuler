@@ -25,6 +25,9 @@ class Dosen extends Model
     public function findbyNIP($nip_dosen) {
         return $this->where('nip_dosen', $nip_dosen)->get();
     }
+    public function findbyFakultas($id_fakultas) {
+        return $this->where('id_fakultas', $id_fakultas)->get();
+    }
     public function newDosen($data) {
         $this->nip_dosen = $data['nip_dosen'];
         $this->kodedosen = $data['kodedosen'];
