@@ -46,7 +46,7 @@ function languageCenterRouter($router) {
       $router->get('getAll', 'HistoryController@getAllHistory');
       $router->get('get/{id}', 'HistoryController@getHistory');
       $router->get('getNIM/{NIM}', 'HistoryController@getHistoryNIM');
-      $router->get('add/{NIM}/{Nama}/{Tgl_Test}/{Tgl_Daftar}/{Tipe_Test}/{Tipe_Peserta}/{Ruangan}/{status_bayar}/{status_setuju}', 'HistoryController@addHistory');
+      $router->get('add/{NIM}/{Nama}/{Tgl_Test}/{Tgl_Daftar}/{Tipe_Test}/{Tipe_Peserta}/{Ruangan}/{status_bayar}/{status_setuju}/{jenis}', 'HistoryController@addHistory');
       $router->get('edit/{id}/{status_bayar}/{status_setuju}', 'HistoryController@editHistory');
       $router->get('delete/{id}', 'HistoryController@deleteHistory');
     });

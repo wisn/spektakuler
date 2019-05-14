@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\LanguageCenter;
 
 use App\Models\LanguageCenter\HistoryUjian;
+use Carbon\Carbon;
 
 class HistoryController extends Controller {
     public function __Construct() {
@@ -21,17 +22,18 @@ class HistoryController extends Controller {
         return response()->json($this->History->getHistoryNIM($NIM), 200);
     }
 
-    public function addHistory($NIM, $Nama, $tgl_test, $tgl_daftar, $tipe_test, $tipe_peserta, $ruangan, $status_bayar, $status_setuju) {
+    public function addHistory($NIM, $Nama, $ruangan, $status_bayar, $jenis, $daftar, $sekarang, $tipetes, $status_setuju, $tipeorang) {
         $object = [
             'NIM' => $NIM,
             'Nama' => $Nama,
-            'Tgl_Test' => $tgl_test,
-            'Tgl_Daftar' => $tgl_daftar,
-            'Tipe_Test' => $tipe_test,
-            'Tipe_Peserta' => $tipe_peserta,
-            'Ruangan' => $ruangan,
-            'Status_Pembayaran' => $status_bayar,
-            'Status_Persetujuan' => $status_setuju
+            'Tgl_Test' => Carbon::parse($daftar)->format('Y-m-d'),
+            'Tgl_Daftar' => Carbon::parse($sekarang)->format('Y-m-d'),
+            'Tipe_Test' => $tipetes,
+            'Tipe_Peserta' => $status_setuju,
+            'Ruangan' => $tipeorang,
+            'Status_Pembayaran' => $jenis?1:0,
+            'Status_Persetujuan' => $ruangan?1:0,
+            'Jenis_History' => $status_bayar
         ];
         return response()->json($this->History->addHistory($object), 200);
     }
