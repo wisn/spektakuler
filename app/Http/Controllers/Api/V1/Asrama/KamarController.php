@@ -17,7 +17,7 @@ class KamarController extends Controller
     public function list()
     {
         return response()->json([
-            'success' => 'true',
+            'success' => true,
             'data' => $this->kamar->list(),
         ], 200);
     }
@@ -25,8 +25,8 @@ class KamarController extends Controller
     public function listAvailable()
     {
         return response()->json([
-            'success' => 'true',
-            'data' => $this->gedung->listAvailable(),
+            'success' => true,
+            'data' => $this->kamar->listAvailable(),
         ], 200);
     }
 
@@ -38,14 +38,14 @@ class KamarController extends Controller
 
         if ($no_kamar == null || $nama_gedung == null || $kapasitas == null) {
             return response()->json([
-                'success' => 'false',
-                'message' => 'One of the required attributes were empty',
+                'success' => false,
+                'message' => 'Salah satu atribut yang diperlukan kosong',
             ], 400);
         } else {
             if ($tersisa < 0 || $kapasitas < 1 || $kapasitas < $tersisa) {
                 return response()->json([
-                    'success' => 'false',
-                    'message' => 'Bad inputs for several attributes',
+                    'success' => false,
+                    'message' => 'Untuk beberapa atribut masukkannya tidak sesuai',
                 ], 400);
             } else {
                 $gedung = $this->gedung->findByNama($nama_gedung);
@@ -62,13 +62,13 @@ class KamarController extends Controller
                     $this->kamar->new($data);
 
                     return response()->json([
-                        'success' => 'true',
+                        'success' => true,
                         'data' => $data,
                       ], 201);
                 } else {
                     return response()->json([
-                        'success' => 'false',
-                        'message' => 'The building were not found',
+                        'success' => false,
+                        'message' => 'Gedung yang dimaksud tidak ada',
                     ], 404);
                 }
             }
@@ -88,14 +88,14 @@ class KamarController extends Controller
 
             if ($no_kamar == null || $nama_gedung == null || $kapasitas == null) {
                 return response()->json([
-                    'success' => 'false',
-                    'message' => 'One of the required attributes were empty',
+                    'success' => false,
+                    'message' => 'Salah satu atribut yang diperlukan kosong',
                   ], 400);
             } else {
                 if ($tersisa < 0 || $kapasitas < 1 || $kapasitas < $tersisa) {
                     return response()->json([
-                        'success' => 'false',
-                        'message' => 'Bad inputs for several attributes',
+                        'success' => false,
+                        'message' => 'Untuk beberapa atribut masukkannya tidak sesuai',
                     ], 400);
                 } else {
                     $data = [
@@ -107,15 +107,15 @@ class KamarController extends Controller
                     $this->kamar->where('id_kamar', $id_kamar)->update($data);
 
                     return response()->json([
-                        'success' => 'true',
+                        'success' => true,
                         'data' => $data,
                     ], 200);
                 }
             }
         } else {
             return response()->json([
-                'success' => 'false',
-                'message' => 'Record not found',
+                'success' => false,
+                'message' => 'Data yang dicari tidak ada',
             ], 404);
         }
     }
@@ -124,12 +124,12 @@ class KamarController extends Controller
         $success = $this->kamar->remove($id_kamar);
         if ($success) {
             return response()->json([
-              'success' => 'true',
+              'success' => true,
             ], 200);
         } else {
             return response()->json([
-                'success' => 'false',
-                'message' => 'Failed removing record',
+                'success' => false,
+                'message' => 'Data yang ingin dihapus tidak ada',
             ], 500);
         }
     }

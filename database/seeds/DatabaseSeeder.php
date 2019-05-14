@@ -11,14 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('HrDosenSeeder');
-        $this->call('HrFakultasSeeder');
+        $this->call('HrStaffSeeder');
+        $this->call('SmMahasiswaSeeder');
         $this->call('AsramaGedungSeeder');
-        $this->call('PpmEventsSeeder');
-        $this->call('PpmPapersSeeder');
-        $this->call('PpmSubwritersSeeder');
-        $this->call('PpmStaffsSeeder');
-        $this->call('PpmEvaluatorsSeeder');
-        $this->call('PpmReviewsSeeder');
+        $this->call('AsramaKamarSeeder');
+        $this->call('AsramaPenghuniSeeder');
     }
 }

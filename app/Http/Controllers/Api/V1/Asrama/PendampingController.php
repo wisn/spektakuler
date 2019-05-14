@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Api\V1\Asrama;
 
 use Illuminate\Http\Request;
-use App\Models\Asrama\Gedung;
+use App\Models\Asrama\Kamar;
+use App\Models\Asrama\Pendamping;
+use App\Models\StudentManagement\Mahasiswa;
 
-class GedungController extends Controller
+class PendampingController extends Controller
 {
     public function __construct()
     {
-        $this->gedung = new Gedung;
+        $this->kamar = new Kamar;
+        $this->pendamping = new Pendamping;
+        $this->mahasiswa = new Mahasiswa;
     }
 
     public function list()
@@ -20,47 +24,37 @@ class GedungController extends Controller
         ], 200);
     }
 
-    public function listPutra()
+    public function new(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'data' => $this->gedung->listPutra(),
-        ], 200);
-    }
+        $nim = $request->input('nim');
+        $id_kamar = $request->input('id_kamar');
 
-    public function listPutri()
-    {
-        return response()->json([
-            'success' => true,
-            'data' => $this->gedung->listPutri(),
-        ], 200);
-    }
-
-    public function new(Request $request) {
-        $nama = $request->input('nama');
-        $kategori = $request->input('kategori');
-        $kapasitas = $request->input('kapasitas');
-        $lokasi = $request->input('lokasi');
-
-        if ($nama == null || $kategori == null || $kapasitas == null) {
+        if ($nim == null || $id_kamar == null) {
             return response()->json([
                 'success' => false,
                 'message' => 'Salah satu atribut yang diperlukan kosong',
             ], 400);
         } else {
-            if (!($this->isValidKategori($kategori)) || $kapasitas < 1) {
+            $mahasiswa = $this->mahasiswa->findByNim($nim);
+            $isMahasiswaExists = count($mahasiswa) == 1;
+            $kamar = $this->kamar->findByIdKamar($id_kamar);
+            $isKamarExists = count($kamar) == 1;
+            if (!$isMahasiswaExists) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Untuk beberapa atribut masukkannya tidak sesuai',
+                    'message' => 'Mahasiswa yang dimaksud tidak ada',
+                ], 400);
+            } else if (!$isKamarExists) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Kamar yang dimaksud tidak ada',
                 ], 400);
             } else {
                 $data = [
-                    'nama' => $nama,
-                    'kategori' => $kategori,
-                    'kapasitas' => $kapasitas,
-                    'lokasi' => $lokasi,
+                    'nim' => $nim,
+                    'id_kamar' => $id_kamar,
                 ];
-                $this->gedung->new($data);
+                $this->pendamping->new($data);
 
                 return response()->json([
                     'success' => true,
@@ -70,17 +64,32 @@ class GedungController extends Controller
         }
     }
 
-    public function update($nama, Request $request) {
-        $gedung = $this->gedung->where('nama', $nama)->limit(1)->get();
-        $isExists = count($gedung) == 1;
+    public function assigned($nim, Request $request)
+    {
+        $assigned = $this->pendamping->assigned($nim);
+        if (count($assigned) == 0) {
+            return response()->json([
+                'success' => true,
+                'data' => [],
+            ], 404);
+        } else {
+            return response() ->json([
+                'success' => true,
+                'data' => $assigned,
+            ], 200);
+        }
+    }
+
+    /*public function update($nim, $id_kamar, Request $request) {
+        $pendamping = $this->pendamping->findByNimAndKamar($nim, $id_kamar);
+        $isExists = count($pendamping) == 1;
 
         if ($isExists) {
-            $gedung = $gedung[0];
-            $kategori = $request->input('kategori') ?: $gedung['kategori'];
-            $kapasitas = $request->input('kapasitas') ?: $gedung['kapasitas'];
-            $lokasi = $request->input('lokasi') ?: $gedung['lokasi'];
+            $pendamping = $pendamping[0];
+            $nim = $request->input('nim') ?: $nim;
+            $id_kamar = $request->input('id_kamar') ?: $id_kamar;
 
-            if ($kategori == null || $kapasitas == null) {
+            if ($nim == null || $id_kamar == null) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Salah satu atribut yang diperlukan kosong',
@@ -130,5 +139,5 @@ class GedungController extends Controller
 
     private function isValidKategori($kategori) {
         return $kategori == 'putra' || $kategori == 'putri';
-    }
+    }*/
 }

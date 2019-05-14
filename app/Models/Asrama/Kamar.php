@@ -25,7 +25,8 @@ class Kamar extends Model
         return $this->where('tersisa', '>', 0)->get();
     }
 
-    public function new($data) {
+    public function new($data)
+    {
         $this->no_kamar = $data['no_kamar'];
         $this->nama_gedung = $data['nama_gedung'];
         $this->kapasitas = $data['kapasitas'];
@@ -34,7 +35,13 @@ class Kamar extends Model
         $this->save();
     }
 
-    public function remove($id_kamar) {
+    public function updateByIdKamar($id_kamar, $data)
+    {
+        $this->where('id_kamar', $id_kamar)->update($data);
+    }
+
+    public function remove($id_kamar)
+    {
         $isExists = $this->where('id_kamar', $id_kamar)->limit(1)->count() == 1;
 
         if ($isExists) {
@@ -42,5 +49,10 @@ class Kamar extends Model
         }
 
         return false;
+    }
+
+    public function detail($id_kamar)
+    {
+        
     }
 }

@@ -12,6 +12,7 @@ class Gedung extends Model
         'nama',
         'kategori',
         'kapasitas',
+        'tersisa',
         'lokasi',
     ];
 
@@ -34,6 +35,7 @@ class Gedung extends Model
         $this->nama = $data['nama'];
         $this->kategori = $data['kategori'];
         $this->kapasitas = $data['kapasitas'];
+        $this->tersisa = $data['tersisa'];
         $this->lokasi = $data['lokasi'];
 
         $this->save();

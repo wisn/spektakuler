@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHrStaffTable extends Migration
+class CreateSmMahasiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHrStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_staff', function (Blueprint $table) {
-            $table->integer('id', true, true)
+        Schema::create('sm_mahasiswa', function (Blueprint $table) {
+            $table->integer('id_mahasiswa', true, true)
                 ->unsigned();
-            $table->string('nip', 8)
+            $table->string('nim', 10)
                 ->nullable(false);
             $table->string('username', 16)
                 ->nullable(false);
@@ -24,9 +24,17 @@ class CreateHrStaffTable extends Migration
                 ->nullable(false);
             $table->string('nama')
                 ->nullable(false);
+            $table->string('fakultas', 3)
+                ->nullable(false);
+            $table->string('prodi')
+                ->nullable(false);
+            $table->integer('angkatan')
+                ->nullable(false)
+                ->unsigned();
             $table->timestamps();
 
-            $table->unique(['nip']);
+            $table->index(['nim']);
+            $table->unique(['username']);
         });
     }
 
@@ -37,6 +45,6 @@ class CreateHrStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hr_staff');
+        Schema::dropIfExists('sm_mahasiswa');
     }
 }

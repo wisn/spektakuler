@@ -2,10 +2,6 @@
 
 function AsramaRouter($router) {
     $router->group(['namespace' => 'Asrama'], function () use ($router) {
-        $router->get('/', function () use ($router) {
-            return 'AsramaRouter';
-        });
-
         $router->group(['prefix' => 'gedung'], function () use ($router) {
             $router->get('/list', 'GedungController@list');
 
@@ -30,6 +26,14 @@ function AsramaRouter($router) {
             $router->put('/{id_kamar}/update', 'KamarController@update');
 
             $router->delete('/{id_kamar}/remove', 'KamarController@remove');
+        });
+
+        $router->group(['prefix' => 'pendamping'], function () use ($router) {
+            $router->get('/{nim}/assigned', 'PendampingController@assigned');
+        });
+
+        $router->group(['prefix' => 'penghuni'], function () use ($router) {
+            $router->get('/{nim}/assigned', 'PenghuniController@assigned');
         });
     });
 }

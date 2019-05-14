@@ -25,7 +25,6 @@ class CreateAsramaKamarTable extends Migration
                 ->unsigned();
             $table->integer('tersisa')
                 ->nullable(false)
-                ->default(0)
                 ->unsigned();
             $table->timestamps();
 
