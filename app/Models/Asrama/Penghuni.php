@@ -14,10 +14,6 @@ class Penghuni extends Model
         'id_kamar',
     ];
 
-    public function __constructor() {
-        $this->kamar = new Kamar;
-    }
-
     public function list()
     {
         return $this->all();
@@ -46,13 +42,18 @@ class Penghuni extends Model
 
         if ($isExists) {
           $id_kamar = $penghunian[0]['id_kamar'];
-          $kamar = $this->kamar->detail($id_kamar);
+          $kamar = (new Kamar)->findByIdKamar($id_kamar);
+          $penghuni = $this->findByIdKamar($id_kamar);
           return [
-            'nama_gedung' => $kamar['nama_gedung'],
-            'nomor_kamar' => $kamar['nomor_kamar'],
+            'kamar' => $kamar,
+            'penghuni' => $penghuni,
           ];
         }
 
         return null;
+    }
+
+    public function findByIdKamar($id_kamar) {
+        return $this->where('id_kamar', $id_kamar)->get();
     }
 }

@@ -16,5 +16,20 @@ class AsramaPenghuniSeeder extends Seeder
             'nim' => '1301160479',
             'id_kamar' => 1,
         ]);
+
+        Penghuni::firstOrCreate([
+            'nim' => '100000001',
+            'id_kamar' => 2,
+        ]);
+
+        Penghuni::firstOrCreate([
+            'nim' => '100000002',
+            'id_kamar' => 2,
+        ]);
+
+        Penghuni::firstOrCreate([
+            'nim' => '100000003',
+            'id_kamar' => 2,
+        ]);
     }
 }

@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call('AsramaGedungSeeder');
         $this->call('AsramaKamarSeeder');
         $this->call('AsramaPenghuniSeeder');
+        $this->call('AsramaPendampingSeeder');
     }
 }

@@ -51,8 +51,14 @@ class Kamar extends Model
         return false;
     }
 
-    public function detail($id_kamar)
+    public function findByIdKamar($id_kamar)
     {
-        
+        $kamar = $this->where('id_kamar', $id_kamar)->limit(1)->get();
+        $isExists = count($kamar) == 1;
+        if (!$isExists) {
+            return null;
+        }
+
+        return $kamar;
     }
 }

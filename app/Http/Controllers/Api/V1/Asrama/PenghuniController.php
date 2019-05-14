@@ -75,7 +75,7 @@ class PenghuniController extends Controller
     public function assigned($nim, Request $request)
     {
         $assigned = $this->penghuni->assigned($nim);
-        if (count($assigned) == 0) {
+        if ($assigned == null) {
             return response()->json([
                 'success' => true,
                 'data' => [],

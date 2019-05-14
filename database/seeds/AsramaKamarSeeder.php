@@ -23,7 +23,7 @@ class AsramaKamarSeeder extends Seeder
             'no_kamar' => 101,
             'nama_gedung' => '2',
             'kapasitas' => 4,
-            'tersisa' => 4,
+            'tersisa' => 1,
         ]);
     }
 }

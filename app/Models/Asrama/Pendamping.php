@@ -39,6 +39,6 @@ class Pendamping extends Model
 
     public function assigned($nim)
     {
-        return $this->where('nim', $nim)->get();
+        return $this->leftJoin('asrama_kamar', 'asrama_pendamping.id_kamar', '=', 'asrama_kamar.id_kamar')->get();
     }
 }
