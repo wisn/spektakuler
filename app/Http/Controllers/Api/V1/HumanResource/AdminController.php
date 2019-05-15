@@ -28,7 +28,12 @@ class AdminController extends Controller
     $this->staff= new Staff;
     
   }
-
+  public function findAdmin($nip_admin){
+    return response()->json([
+      'success' =>'true',
+      'data'=> $this->admin->findbyNIP($nip_admin),
+    ], 200);
+  }
   public function ShowDosen()
   {
     // $Dosen = $this->dosenController->index();

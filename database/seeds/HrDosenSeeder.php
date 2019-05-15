@@ -85,7 +85,7 @@ class HrDosenSeeder extends Seeder
         ]);
         Dosen::create([
             'nip_dosen' => '12345685',
-            'kodedosen' => 'ABC',
+            'kodedosen' => 'IKW',
             'nama' => 'Ikin Wastuti',
             'alamat' => 'Jl. Telekomunikasi',
             'ttl' => 'Bandung, 1 Mei 1990',
@@ -95,7 +95,7 @@ class HrDosenSeeder extends Seeder
         ]);
         Dosen::create([
             'nip_dosen' => '12345686',
-            'kodedosen' => 'ABC',
+            'kodedosen' => 'ELR',
             'nama' => 'Elma Riyanti',
             'alamat' => 'Jl. Telekomunikasi',
             'ttl' => 'Bandung, 1 Mei 1990',
@@ -105,13 +105,23 @@ class HrDosenSeeder extends Seeder
         ]);
         Dosen::create([
             'nip_dosen' => '12345687',
-            'kodedosen' => 'ABC',
+            'kodedosen' => 'EKW',
             'nama' => 'Elvin Kusmawati',
             'alamat' => 'Jl. Telekomunikasi',
             'ttl' => 'Bandung, 1 Mei 1990',
             'nohp' => 123456789,
             'gaji' => 10000000,
             'id_fakultas' => 'FIF', 
-        ]);                                                           
+        ]);
+        Dosen::create([
+            'nip_dosen' => '12345688',
+            'kodedosen' => 'EKW',
+            'nama' => 'Riandi Kartiko',
+            'alamat' => 'Komp. Reni Jaya AF-1/11',
+            'ttl' => 'Jakarta, 21 April 1998',
+            'nohp' => 123456789,
+            'gaji' => 10000000,
+            'id_fakultas' => 'FIF', 
+        ]);                                                                      
     }
 }

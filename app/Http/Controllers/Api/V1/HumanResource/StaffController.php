@@ -32,6 +32,12 @@ class StaffController extends Controller
       'data'=> $this->staff->findbyNIP($nip_staff),
     ], 200);
   }
+  public function findStaffFak($id_fakultas){
+    return response()->json([
+      'success' =>'true',
+      'data'=> $this->staff->findbyFakultas($id_fakultas),
+    ], 200);
+  }  
 
   public function newStaff(Request $request){
     $nip_staff = $request->input('nip_staff');

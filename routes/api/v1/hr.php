@@ -17,10 +17,12 @@ function humanResourceRouter($router) {
             $router->get('/ShowStaff', 'StaffController@index');
             $router->get('/Show/{nip_staff}', 'StaffController@findStaff');
             $router->post('/newStaff', 'StaffController@newStaff');
-            $router->put('/{nip_staff}/updateStaff', 'StaffController@updateStaff');
-            $router->delete('/{nip_staff}/removeStaff', 'StaffController@removeStaff');
+            $router->put('/updateStaff/{nip_staff}', 'StaffController@updateStaff');
+            $router->delete('/removeStaff/{nip_staff}', 'StaffController@removeStaff');
+            $router->get('/Showbyfakultas/{id_fakultas}', 'StaffController@findStaffFak');
         });
         $router->group(['prefix' => 'Admin'], function () use ($router) {
+            $router->get('/Show/{nip_admin}', 'AdminController@findAdmin');
             $router->get('/ShowDosen','AdminController@ShowDosen');
             $router->get('/ShowStaff','AdminController@ShowStaff');
             $router->get('/FindDosen/{nip_dosen}', 'AdminController@findDosen');
@@ -36,6 +38,12 @@ function humanResourceRouter($router) {
         $router->group(['prefix' => 'View'], function () use ($router) {
              $router->get('/HR', 'ViewController@index'); 
              $router->get('/HR/{nip_dosen}', 'ViewController@search');
-        });                              
+        });
+        $router->group(['prefix' => 'Absen'], function () use ($router) {
+            $router->post('/newAbsen','AbsenController@newAbsen');
+            $router->get('/ShowAbsen','AbsenController@index');
+            $router->get('/fetchAbsen/{id_fakultas}','AbsenController@fetchAbsen');
+            $router->put('/updateAbsen/{nip}','AbsenController@updateAbsen');
+        });                                
     });
 }

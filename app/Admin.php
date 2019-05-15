@@ -17,4 +17,7 @@ class Admin extends Model
         'gaji',
         'id_fakultas',
     ];
+    public function findbyNIP($nip_admin) {
+        return $this->where('nip_admin', $nip_admin)->get();
+    }   
 }

@@ -25,6 +25,9 @@ class Staff extends Model
     public function findbyNIP($nip_staff) {
         return $this->where('nip_staff', $nip_staff)->get();
     }
+    public function findbyFakultas($id_fakultas) {
+        return $this->where('id_fakultas', $id_fakultas)->get();
+    }    
     public function newStaff($data) {
         $this->nip_staff = $data['nip_staff'];
         $this->jenis_staff = $data['jenis_staff'];
