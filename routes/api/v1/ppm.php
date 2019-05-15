@@ -53,6 +53,8 @@ function ppmRouter($router) {
             $router->put('/{id_paper}/changeStatus', 'PaperController@changeStatus');
             $router->delete('/{id_paper}/remove', 'PaperController@remove');
 
+            $router->get('/subwriter/{nim_mahasiswa}', 'SubwriterController@listByMahasiswa');
+
             $router->get('/{id_paper}/subwriter', 'SubwriterController@listByPaper');
             $router->get('/{id_paper}/subwriter/list', 'SubwriterController@listByPaper');
             $router->post('/{id_paper}/subwriter/add/{nim_mahasiswa}', 'SubwriterController@add');
