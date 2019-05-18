@@ -45,8 +45,8 @@ function languageCenterRouter($router) {
       });
       $router->get('getAll', 'HistoryController@getAllHistory');
       $router->get('get/{id}', 'HistoryController@getHistory');
-      $router->get('getNIM/{NIM}', 'HistoryController@getHistoryNIM');
-      $router->get('add/{NIM}/{Nama}/{Tgl_Test}/{Tgl_Daftar}/{Tipe_Test}/{Tipe_Peserta}/{Ruangan}/{status_bayar}/{status_setuju}', 'HistoryController@addHistory');
+    //   $router->get('getNIM/{NIM}', 'HistoryController@getHistoryNIM');
+    //   $router->get('add/{NIM}/{Nama}/{Tgl_Test}/{Tgl_Daftar}/{Tipe_Test}/{Tipe_Peserta}/{Ruangan}/{status_bayar}/{status_setuju}', 'HistoryController@addHistory');
       $router->get('edit/{id}/{status_bayar}/{status_setuju}', 'HistoryController@editHistory');
       $router->get('delete/{id}', 'HistoryController@deleteHistory');
     });
@@ -56,10 +56,10 @@ function languageCenterRouter($router) {
         return 'This is LaC Keanggotaan';
       });
       $router->get('getAll', 'MembershipController@getAllMembership');
-      $router->get('get/{NIM}', 'MembershipController@getMembership');
-      $router->get('add/{NIM}/{Nama}/{status}/{expire}/{payment}', 'MembershipController@addMembership');
-      $router->get('edit/{NIM}/{Status}/{expire}/{pembayaran}', 'MembershipController@editMembership');
-      $router->get('delete/{NIM}', 'MembershipController@deleteMembership');
+    //   $router->get('get/{NIM}', 'MembershipController@getMembership');
+    //   $router->get('add/{NIM}/{Nama}/{status}/{expire}/{payment}', 'MembershipController@addMembership');
+    //   $router->get('edit/{NIM}/{Status}/{expire}/{pembayaran}', 'MembershipController@editMembership');
+    //   $router->get('delete/{NIM}', 'MembershipController@deleteMembership');
     });
 
     $router->group(['prefix' => 'listujian'], function() use ($router) {
@@ -79,8 +79,8 @@ function languageCenterRouter($router) {
       });
       $router->get('getAll', 'NilaiController@getAllNilai');
       $router->get('get/{id}', 'NilaiController@getNilai');
-      $router->get('getNIM/{NIM}', 'NilaiController@getNilaiNIM');
-      $router->get('add/{tgl_test}/{tipe}/{NIM}/{Nama}/{tipe}/{Ruangan}/{Nilai_Total}/{Jenis_Nilai}', 'NilaiController@addNilai');
+    //   $router->get('getNIM/{NIM}', 'NilaiController@getNilaiNIM');
+    //   $router->get('add/{tgl_test}/{tipe}/{NIM}/{Nama}/{tipe}/{Ruangan}/{Nilai_Total}/{Jenis_Nilai}', 'NilaiController@addNilai');
       $router->get('edit/{id}/{Nilai_Total}', 'NilaiController@editNilai');
       $router->get('delete/{id}', 'NilaiController@deleteNilai');
     });
