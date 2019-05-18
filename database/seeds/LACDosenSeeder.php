@@ -12,17 +12,17 @@ class LACDosenSeeder extends Seeder
      */
     public function run()
     {
-        Dosen::create([
+        Dosen::firstOrCreate([
             'NIP' => '1000000001',
             'Nama' => 'Si Bapak A'
         ]);
 
-        Dosen::create([
+        Dosen::firstOrCreate([
             'NIP' => '1000000002',
             'Nama' => 'Si Bapak B'
         ]);
 
-        Dosen::create([
+        Dosen::firstOrCreate([
             'NIP' => '1000000003',
             'Nama' => 'Si Bapak C'
         ]);

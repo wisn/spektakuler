@@ -12,17 +12,17 @@ class PpmSubwritersSeeder extends Seeder
      */
     public function run()
     {
-        Subwriter::create([
+        Subwriter::firstOrCreate([
             'nim_mahasiswa' => '1301160425',
             'id_paper' => 1
         ]);
 
-        Subwriter::create([
+        Subwriter::firstOrCreate([
             'nim_mahasiswa' => '1301164188',
             'id_paper' => 1
         ]);
 
-        Subwriter::create([
+        Subwriter::firstOrCreate([
             'nim_mahasiswa' => '1301160509',
             'id_paper' => 2
         ]);

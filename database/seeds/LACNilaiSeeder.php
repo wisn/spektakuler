@@ -13,7 +13,7 @@ class LACNilaiSeeder extends Seeder
      */
     public function run()
     {
-        Nilai::create([
+        Nilai::firstOrCreate([
             'Tgl_Test' => Carbon::parse('27-04-2018'),
             'Tipe_Test' => 'ECCT',
             'NIM' => '1301164203',
@@ -24,7 +24,7 @@ class LACNilaiSeeder extends Seeder
             'Jenis_Nilai' => 'Internal' 
         ]);
 
-        Nilai::create([
+        Nilai::firstOrCreate([
             'Tgl_Test' => Carbon::parse('02-03-2018'),
             'Tipe_Test' => 'EPrT',
             'NIM' => '1301164203',

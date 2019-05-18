@@ -12,17 +12,17 @@ class LACMahasiswaSeeder extends Seeder
      */
     public function run()
     {
-        Mahasiswa::create([
+        Mahasiswa::firstOrCreate([
             'NIM' => '1301164203',
             'Nama' => 'Gagah Ghalistan'
         ]);
 
-        Mahasiswa::create([
+        Mahasiswa::firstOrCreate([
             'NIM' => '1301164045',
             'Nama' => 'Aditya Eka Maulana'
         ]);
 
-        Mahasiswa::create([
+        Mahasiswa::firstOrCreate([
             'NIM' => '1301164351',
             'Nama' => 'Ryo Alif Ramadhan'
         ]);

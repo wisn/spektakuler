@@ -13,7 +13,7 @@ class HrDosenSeeder extends Seeder
      */
     public function run()
     {
-        Dosen::create([
+        Dosen::firstOrCreate([
         	'nip_dosen' => '12345678',
         	'kodedosen' => 'ABC',
         	'nama' => 'Ay Be Si',
@@ -23,7 +23,7 @@ class HrDosenSeeder extends Seeder
         	'gaji' => 10000000,
         	'id_fakultas' => 'FIF',	
         ]);
-        Dosen::create([
+        Dosen::firstOrCreate([
             'nip_dosen' => '1234538',
             'kodedosen' => 'ABD',
             'nama' => 'Ay Be Di',

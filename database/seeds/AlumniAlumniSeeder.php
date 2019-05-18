@@ -13,13 +13,13 @@ class AlumniAlumniSeeder extends Seeder
     public function run()
     {
         //
-        Alumni::create([
+        Alumni::firstOrCreate([
             'NIM' => '1301164131',
             'tahun_kelulusan' => '2020',
 
         ]);
 
-        Alumni::create([
+        Alumni::firstOrCreate([
             'NIM' => '130116400',
             'tahun_kelulusan' => '2020',
 

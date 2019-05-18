@@ -12,7 +12,7 @@ class PpmStaffsSeeder extends Seeder
      */
     public function run()
     {
-        Staff::create([
+        Staff::firstOrCreate([
             'username' => 'rizkiar00',
             'email' => 'rizkiganteng@rocketmail.com',
             'password' => md5('rizkiganteng'),

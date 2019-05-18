@@ -13,7 +13,7 @@ class LACKeanggotaanSeeder extends Seeder
      */
     public function run()
     {
-        Keanggotaan::create([
+        Keanggotaan::firstOrCreate([
             'NIM' => '1301164045',
             'Nama' => 'Aditya Eka Maulana',
             'status' => 'Anggota',
@@ -21,7 +21,7 @@ class LACKeanggotaanSeeder extends Seeder
             'pembayaran' => 'lunas'
         ]);
 
-        Keanggotaan::create([
+        Keanggotaan::firstOrCreate([
             'NIM' => '1301164351',
             'Nama' => 'Ryo Alif Ramadhan',
             'status' => 'Expired',
