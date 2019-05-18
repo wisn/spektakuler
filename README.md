@@ -196,7 +196,7 @@ class AsramaGedungSeeder extends Seeder
      */
     public function run()
     {
-        // Gedung::create([...]);
+        // Gedung::firstOrCreate([...]);
     }
 }
 ```
