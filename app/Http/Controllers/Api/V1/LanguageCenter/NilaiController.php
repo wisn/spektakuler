@@ -18,7 +18,7 @@ class NilaiController extends Controller {
     }
 
     public function getNilaiNIM($nim) {
-      return response()->json($this->Nilai->getNilai($nim), 200);
+      return response()->json($this->Nilai->getNilaiNIM($nim), 200);
     }
 
     public function addNilai($tgl, $tipe, $nim, $nama, $tipe_peserta, $ruangan, $nilai_total, $jenis_nilai) {

@@ -3,6 +3,7 @@
 namespace App\Models\LanguageCenter;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Keanggotaan extends Model
 {
@@ -26,10 +27,10 @@ class Keanggotaan extends Model
 
     public function addKeanggotaan($nim, $nama, $status, $expire, $pembayaran) {
         return $this->insert([
-            'NIM' => $nim,
-            'Nama' => $nama,
-            'status' => $status,
-            'expire' => $expire,
+            'NIM' => $status,
+            'Nama' => $expire,
+            'status' => $nim,
+            'expire' => $nama,
             'pembayaran' => $pembayaran
         ]);
     }
