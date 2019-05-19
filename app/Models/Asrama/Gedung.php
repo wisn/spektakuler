@@ -12,6 +12,7 @@ class Gedung extends Model
         'nama',
         'kategori',
         'kapasitas',
+        'tersisa',
         'lokasi',
     ];
 
@@ -30,20 +31,32 @@ class Gedung extends Model
         return $this->where('kategori', 'putri')->get();
     }
 
+    public function listKamar($id_gedung) {
+        return $this->join('asrama_kamar', function ($join) use ($id_gedung) {
+            $join->on('asrama_kamar.id_gedung', '=', 'asrama_gedung.id_gedung')
+                ->where('asrama_kamar.id_gedung', '=', $id_gedung);
+        })->get();
+    }
+
+    public function findById($id_gedung) {
+        return $this->where('id_gedung', $id_gedung)->limit(1)->get();
+    }
+
     public function new($data) {
         $this->nama = $data['nama'];
         $this->kategori = $data['kategori'];
         $this->kapasitas = $data['kapasitas'];
+        $this->tersisa = $data['tersisa'];
         $this->lokasi = $data['lokasi'];
 
         $this->save();
     }
 
-    public function remove($nama) {
-        $isExists = $this->where('nama', $nama)->limit(1)->count() == 1;
+    public function remove($id_gedung) {
+        $isExists = $this->where('id_gedung', $id_gedung)->limit(1)->count() == 1;
 
         if ($isExists) {
-            return $this->where('nama', $nama)->delete();
+            return $this->where('id_gedung', $id_gedung)->delete();
         }
 
         return false;

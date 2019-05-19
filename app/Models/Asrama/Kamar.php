@@ -10,7 +10,8 @@ class Kamar extends Model
 
     protected $fillable = [
         'no_kamar',
-        'nama_gedung',
+        'id_gedung',
+        'kategori',
         'kapasitas',
         'tersisa',
     ];
@@ -25,16 +26,23 @@ class Kamar extends Model
         return $this->where('tersisa', '>', 0)->get();
     }
 
-    public function new($data) {
+    public function findById($id_kamar) {
+        return $this->where('id_kamar', $id_kamar)->limit(1)->get();
+    }
+
+    public function new($data)
+    {
         $this->no_kamar = $data['no_kamar'];
-        $this->nama_gedung = $data['nama_gedung'];
+        $this->id_gedung = $data['id_gedung'];
+        $this->kategori = $data['kategori'];
         $this->kapasitas = $data['kapasitas'];
         $this->tersisa = $data['tersisa'];
 
         $this->save();
     }
 
-    public function remove($id_kamar) {
+    public function remove($id_kamar)
+    {
         $isExists = $this->where('id_kamar', $id_kamar)->limit(1)->count() == 1;
 
         if ($isExists) {

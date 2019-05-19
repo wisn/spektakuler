@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('HrDosenSeeder');
         $this->call('HrFakultasSeeder');
-        $this->call('AsramaGedungSeeder');
+        //$this->call('AsramaGedungSeeder');
         $this->call('PpmEventsSeeder');
         $this->call('PpmPapersSeeder');
         $this->call('PpmSubwritersSeeder');
@@ -27,5 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call('LACHistoryUjianSeeder');
         $this->call('LACKeanggotaanSeeder');
         $this->call('LACNilaiSeeder');
+        $this->call('HrStaffSeeder');
+        $this->call('AsramaStaffSeeder');
     }
 }

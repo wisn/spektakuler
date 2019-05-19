@@ -16,7 +16,7 @@ class CreateHrStaffTable extends Migration
         Schema::create('hr_staff', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nip_staff',8)->unique();
-            $table->string('kodedosen', 3);
+            $table->string('jenis_staff', 10);
             $table->string('nama', 50);
             $table->string('alamat', 100);
             $table->string('ttl', 100);
