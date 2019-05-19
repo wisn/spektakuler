@@ -17,13 +17,17 @@ class HrCutiSeeder extends Seeder
         	'jeniscuti' => 'hamil',
         	'rentangtanggal' =>'2019-06-13',
             'status' => 'not approved',
-            'nip_dosen' => '12345678',
+            'keterangan' => 'ngetest',
+            'nip' => '12345678',
+            'id_fakultas' => 'FIF',
         ]);
         Cuti::create([
             'jeniscuti' => 'hamil',
             'rentangtanggal' =>'2019-06-13',
             'status' => 'not approved',
-            'nip_staff' => '98711678',
+            'keterangan' => 'ngetest',
+            'nip' => '98711678',
+            'id_fakultas' => 'FIF',
         ]);
     }
 }

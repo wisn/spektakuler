@@ -33,7 +33,10 @@ function humanResourceRouter($router) {
         });
         $router->group(['prefix' => 'Cuti'], function () use ($router) {
             $router->get('/ShowCuti','CutiController@index');
-            $router->post('/newCuti', 'CutiController@newCuti');            
+            $router->get('/fetchCuti/{id_fakultas}','CutiController@fetchCuti');
+            $router->get('/fetchCutiNIP/{nip}','CutiController@fetchCutiNIP');
+            $router->post('/newCuti', 'CutiController@newCuti'); 
+            $router->put('/updateCuti/{nip}','CutiController@updateCuti');           
         });
         $router->group(['prefix' => 'View'], function () use ($router) {
              $router->get('/HR', 'ViewController@index'); 

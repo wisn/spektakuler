@@ -14,7 +14,7 @@ class HrAdminSeeder extends Seeder
     public function run()
     {
         Admin::create([
-        	'nip_admin' => '23435678',
+        	'nip_admin' => '23456789',
         	'nama' => 'Ay De Si',
         	'alamat' => 'Jl. Telekomunikasi',
         	'ttl' => 'Bandung, 1 Mei 1990',

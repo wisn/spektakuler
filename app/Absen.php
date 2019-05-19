@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Absen extends Model
 {
     protected $table = 'hr_absen';
-
+    
     protected $fillable = [
         'nip',
         'id_fakultas',
@@ -25,9 +25,20 @@ class Absen extends Model
     }
     public function fetchAbsenbyAdmin($id_fakultas)
     {
-
-        $this->where('id_fakultas', $id_fakultas);
-        return $this->orwhere('status','not approved')->get();
+        return Absen::whereRaw('id_fakultas = "'.$id_fakultas.'" and status = "not approved"')->get();
+        // return select('SELECT * FROM hr_absen where status = "not approved"')->get();
+               
+        // $query = "SELECT * FROM hr_absen where id_fakultas = $id_fakultas and status = 'not approved'";
+        // $safe_string = Absen::getPdo()->quote($string);
+        // return $safe_string->get();
+        // $query = Absen::raw("FROM hr_absen where id_fakultas = $id_fakultas and status = 'not approved'");
+        // return $query->get();        
+        // $query = $this->where('id_fakultas', $id_fakultas)->orwhere('status','not approved');
+        // return $query->get();        
+        // $query= "SELECT * FROM hr_absen where id_fakultas = $id_fakultas and status = 'not approved'";
+        // return $query;
+        // $this->where('id_fakultas', $id_fakultas);
+        // return $this->orwhere('status','not approved')->get();
         // return $this->where('id_fakultas', $id_fakultas)->get();
     }
     

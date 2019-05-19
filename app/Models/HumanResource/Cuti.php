@@ -12,19 +12,30 @@ class Cuti extends Model
         'jeniscuti',
         'rentangtanggal',
         'status',
-        'nip_dosen',
-        'nip_staff',
+        'keterangan',
+        'nip',
+        'id_fakultas',
     ];
     public function listCuti()
     {
         return $this->all();
+
     }
+    public function fetchCutibyAdmin($id_fakultas)
+    {
+        return Cuti::whereRaw('id_fakultas = "'.$id_fakultas.'" and status = "not approved"')->get();         
+    }
+    public function fetchCutibyNIP($nip)
+    {
+        return Cuti::whereRaw('nip = "'.$nip.'"')->get();         
+    }      
     public function newCuti($data) {
         $this->jeniscuti = $data['jeniscuti'];
         $this->rentangtanggal = $data['rentangtanggal'];
         $this->status = $data['status'];
-        $this->nip_dosen = $data['nip_dosen'];
-        $this->nip_staff = $data['nip_staff'];
+        $this->keterangan = $data['keterangan'];
+        $this->nip = $data['nip'];
+        $this->id_fakultas = $data['id_fakultas'];
         $this->save();
     }
     

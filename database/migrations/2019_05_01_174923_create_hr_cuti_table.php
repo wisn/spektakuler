@@ -18,8 +18,9 @@ class CreateHrCutiTable extends Migration
             $table->string('jeniscuti',20);
             $table->dateTime('rentangtanggal');
             $table->string('status',20);
-            $table->string('nip_dosen', 8)->nullable();
-            $table->string('nip_staff', 8)->nullable();
+            $table->string('keterangan',100);
+            $table->string('nip', 8);
+            $table->string('id_fakultas', 4);
             $table->timestamps();
         });
     }
