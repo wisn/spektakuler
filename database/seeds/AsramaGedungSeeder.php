@@ -12,13 +12,13 @@ class AsramaGedungSeeder extends Seeder
      */
     public function run()
     {
-        Gedung::create([
+        Gedung::firstOrCreate([
             'nama' => 'A',
             'kategori' => 'putri',
             'kapasitas' => 40, // kamar
         ]);
 
-        Gedung::create([
+        Gedung::firstOrCreate([
             'nama' => '1',
             'kategori' => 'putra',
             'kapasitas' => 40,

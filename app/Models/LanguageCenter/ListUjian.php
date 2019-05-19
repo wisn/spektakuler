@@ -39,7 +39,7 @@ class ListUjian extends Model
             ]);
     }
 
-    public function deleteListUjian($noruang) {
-        return $this->where('Kode_Ruangan', $noruang)->delete();
+    public function deleteListUjian($id) {
+        return $this->where('id', $id)->delete();
     }
 }

@@ -12,22 +12,22 @@ class LACRuanganSeeder extends Seeder
      */
     public function run()
     {
-        Ruangan::create([
+        Ruangan::firstOrCreate([
             'Kode_Ruangan' => 'A101',
             'Kapasitas' => 20
         ]);
 
-        Ruangan::create([
+        Ruangan::firstOrCreate([
             'Kode_Ruangan' => 'A102',
             'Kapasitas' => 20
         ]);
 
-        Ruangan::create([
+        Ruangan::firstOrCreate([
             'Kode_Ruangan' => 'A103',
             'Kapasitas' => 20
         ]);
 
-        Ruangan::create([
+        Ruangan::firstOrCreate([
             'Kode_Ruangan' => 'A104',
             'Kapasitas' => 30
         ]);

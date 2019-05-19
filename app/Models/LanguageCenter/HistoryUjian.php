@@ -41,7 +41,8 @@ class HistoryUjian extends Model
         return $this->where('id', $id)
         ->update([
             'Status_Pembayaran' => $status_bayar,
-            'Status_Persetujuan' => $status_setuju
+            'Status_Persetujuan' => $status_setuju,
+            'Jenis_History' => 'test'
             ]);
     }
 

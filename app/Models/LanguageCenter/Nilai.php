@@ -35,8 +35,8 @@ class Nilai extends Model
 
     public function addNilai($tgl, $tipe, $nim, $nama, $tipe_peserta, $ruangan, $nilai_total, $jenis_nilai) {
         return $this->insert([
-            'Tgl_Test' => $tgl,
-            'Tipe_Test' => $tipe,
+            'Tgl_Test' => $tipe,
+            'Tipe_Test' => $tgl,
             'NIM' => $nim,
             'Nama' => $nama,
             'Tipe_Peserta' => $tipe_peserta,

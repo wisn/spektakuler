@@ -13,7 +13,7 @@ class LACHistoryUjianSeeder extends Seeder
      */
     public function run()
     {
-        HistoryUjian::create([
+        HistoryUjian::firstOrCreate([
             'NIM' => '1301164203',
             'Nama' => 'Gagah Ghalistan',
             'Tgl_Test' => Carbon::parse('27-04-2018'),
@@ -26,7 +26,7 @@ class LACHistoryUjianSeeder extends Seeder
             'Jenis_History' => 'test'
         ]);
 
-        HistoryUjian::create([
+        HistoryUjian::firstOrCreate([
             'NIM' => '1301164203',
             'Nama' => 'Gagah Ghalistan',
             'Tgl_Test' => Carbon::parse('02-03-2018'),
@@ -39,7 +39,7 @@ class LACHistoryUjianSeeder extends Seeder
             'Jenis_History' => 'test'
         ]);
 
-        HistoryUjian::create([
+        HistoryUjian::firstOrCreate([
             'NIM' => '1301164351',
             'Nama' => 'Ryo Alif Ramadhan',
             'Tgl_Test' => Carbon::parse('02-03-2018'),
@@ -52,7 +52,7 @@ class LACHistoryUjianSeeder extends Seeder
             'Jenis_History' => 'kursus'
         ]);
 
-        HistoryUjian::create([
+        HistoryUjian::firstOrCreate([
             'NIM' => '1301164351',
             'Nama' => 'Aditya Eka Maulana',
             'Tgl_Test' => Carbon::parse('02-03-2018'),

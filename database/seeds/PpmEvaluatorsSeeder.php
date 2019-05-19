@@ -12,13 +12,14 @@ class PpmEvaluatorsSeeder extends Seeder
      */
     public function run()
     {
-        Evaluator::create([
+        Evaluator::firstOrCreate([
             'username' => 'asukarizki',
             'email' => 'rqrqrq@rocketmail.com',
             'password' => password_hash('12345', PASSWORD_DEFAULT),
             'name' => 'Muhammad Alfarizky Sunetyo'
         ]);
-        Evaluator::create([
+
+        Evaluator::firstOrCreate([
             'username' => 'ansuci',
             'email' => 'bigsister@rocketmail.com',
             'password' => password_hash('12345', PASSWORD_DEFAULT),

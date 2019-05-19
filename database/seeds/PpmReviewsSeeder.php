@@ -12,7 +12,7 @@ class PpmReviewsSeeder extends Seeder
      */
     public function run()
     {
-        Review::create([
+        Review::firstOrCreate([
             'id_evaluator' => 2,
             'id_paper' => 1,
             'review' => 'Sudah layak untuk disubmit.'

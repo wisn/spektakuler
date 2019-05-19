@@ -13,7 +13,7 @@ class HrFakultasSeeder extends Seeder
      */
     public function run()
     {
-        Fakultas::create([
+        Fakultas::firstOrCreate([
         	'id_fakultas' => 'FIF', 
         	'nama_fakultas'=>'Fakultas Informatika',	
         ]);

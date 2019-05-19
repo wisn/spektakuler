@@ -12,7 +12,7 @@ class PpmPapersSeeder extends Seeder
      */
     public function run()
     {
-        Paper::create([
+        Paper::firstOrCreate([
             'title' => 'Mengurangi Efek Rumah Kaca dengan Machine Learning',
             'date' => '2019-03-12',
             'fund' => '10000000',
@@ -21,7 +21,7 @@ class PpmPapersSeeder extends Seeder
             'nip_dosen' => '100001',
             'id_staff' => 1
         ]);
-        Paper::create([
+        Paper::firstOrCreate([
             'title' => 'Analisis Sentimen Hasil Pemilu 2019 pada Media Sosial',
             'date' => '2020-04-20',
             'fund' => '8000000',
