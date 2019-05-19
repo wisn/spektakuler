@@ -82,6 +82,7 @@ class PaperController extends Controller
         $id_event = $request->input('id_event');
         $nip_dosen = $request->input('nip_dosen');
         $nim_mahasiswa = $request->input('nim_mahasiswa');
+        $file_path = $request->input('file_path');
 
         $status = 'pending';
 
@@ -91,7 +92,7 @@ class PaperController extends Controller
                 'message' => 'Empty attribute(s)'
             ], 400);
         }
-        if ($this->paper->add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa)) {
+        if ($this->paper->add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa, $file_path)) {
             return response()->json([
                 'success' => 'true',
             ], 201);

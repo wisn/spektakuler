@@ -40,7 +40,7 @@ class Paper extends Model
         return $this->where('id_paper', $id_paper)->first();
     }
 
-    public function add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa) 
+    public function add($title, $date, $fund, $status, $id_event, $nip_dosen, $nim_mahasiswa, $file_path) 
     {
         $paper = new Paper;
         $paper->title = $title;
@@ -49,6 +49,10 @@ class Paper extends Model
         $paper->status = $status;
         $paper->id_event = $id_event;
         $paper->nip_dosen = $nip_dosen;
+
+        if($file_path) {
+            $paper->file_path = $file_path;
+        }
 
         $paper->save();
         
