@@ -64,18 +64,25 @@ class PenghuniController extends Controller
             $isExistsKamar = count($kamar) == 1;
 
             if ($isExistsMahasiswa && $isExistsKamar) {
-                $data = [
-                    'id_mahasiswa' => $id_mahasiswa,
-                    'id_kamar' => $id_kamar,
-                ];
-                $this->penghuni->new($data);
+                if ($kamar[0]->tersisa == 0) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Kamar '. $kamar[0]->no_kamar . ' sudah penuh',
+                    ], 400);
+                } else {
+                    $data = [
+                        'id_mahasiswa' => $id_mahasiswa,
+                        'id_kamar' => $id_kamar,
+                    ];
+                    $this->penghuni->new($data);
 
-                $data = ['tersisa' => $kamar[0]->tersisa - 1];
-                $this->kamar->where('id_kamar', $id_kamar)->update($data);
+                    $data = ['tersisa' => $kamar[0]->tersisa - 1];
+                    $this->kamar->where('id_kamar', $id_kamar)->update($data);
 
-                return response()->json([
-                    'success' => true,
-                ], 201);
+                    return response()->json([
+                        'success' => true,
+                    ], 201);
+                }
             } else {
                 return response()->json([
                     'success' => false,
