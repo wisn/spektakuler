@@ -34,6 +34,14 @@ class Penghuni extends Model
         return $penghuni;
     }
 
+    public function listKamar($id_kamar)
+    {
+        return $this->join('sm_mahasiswa', function ($join) use ($id_kamar) {
+            $join->on('asrama_penghuni.id_mahasiswa', '=', 'sm_mahasiswa.id_mahasiswa')
+                ->where('id_kamar', $id_kamar);
+        })->get();
+    }
+
     public function detail($id_mahasiswa)
     {
         $penghuni = $this->where('id_mahasiswa', $id_mahasiswa)->limit(1)->get();

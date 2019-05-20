@@ -44,7 +44,10 @@ class SeniorResidence extends Model
 
     public function findByUsername($username)
     {
-        return $this->where('username', $username)->limit(1)->get();
+        return $this->join('sm_mahasiswa', function ($join) use ($username) {
+            $join->on('asrama_sr.nim', '=', 'sm_mahasiswa.nim')
+                ->where('asrama_sr.username', $username);
+        })->get();
     }
 
     public function findById($id_sr)

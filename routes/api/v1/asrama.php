@@ -81,6 +81,8 @@ function AsramaRouter($router) {
 
             $router->get('/list/mahasiswa/{id_mahasiswa}', 'PenghuniController@listMahasiswa');
 
+            $router->get('/list/kamar/{id_kamar}', 'PenghuniController@listKamar');
+
             $router->post('/new', 'PenghuniController@new');
 
             $router->delete('/{id_mahasiswa}/remove', 'PenghuniController@remove');

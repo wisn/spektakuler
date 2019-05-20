@@ -32,6 +32,14 @@ class PenghuniController extends Controller
         ], 200);
     }
 
+    public function listKamar($id_kamar)
+    {
+        return response()->json([
+            'success' => true,
+            'data' => $this->penghuni->listKamar($id_kamar),
+        ], 200);
+    }
+
     public function detail($id_mahasiswa)
     {
         return response()->json([
