@@ -15,6 +15,10 @@ class SeniorResidence extends Model
         'id_gedung',
     ];
 
+    protected $hidden = [
+        'password',
+    ];
+
     public function list()
     {
         return $this->join('sm_mahasiswa', function ($join) {

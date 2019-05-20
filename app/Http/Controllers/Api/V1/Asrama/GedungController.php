@@ -52,6 +52,13 @@ class GedungController extends Controller
         ]);
     }
 
+    public function listKamarMahasiswa($id_gedung) {
+        return response()->json([
+            'success' => true,
+            'data' => $this->gedung->listKamarMahasiswa($id_gedung),
+        ]);
+    }
+
     public function show($id_gedung) {
         $gedung = $this->gedung->findById($id_gedung);
         $isExists = count($gedung) == 1;

@@ -49,6 +49,17 @@ class Gedung extends Model
         })->get();
     }
 
+    public function listKamarMahasiswa($id_gedung)
+    {
+        return $this->join('asrama_kamar', function ($join) use ($id_gedung) {
+            $join->on('asrama_kamar.id_gedung', '=', 'asrama_gedung.id_gedung')
+                ->where([
+                    ['asrama_kamar.id_gedung', '=', $id_gedung],
+                    ['asrama_kamar.kategori', '=', 'mahasiswa'],
+                ]);
+        })->get();
+    }
+
     public function findById($id_gedung) {
         return $this->where('id_gedung', $id_gedung)->limit(1)->get();
     }

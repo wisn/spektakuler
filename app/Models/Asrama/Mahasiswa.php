@@ -14,6 +14,10 @@ class Mahasiswa extends Model
         'password',
     ];
 
+    protected $hidden = [
+        'password',
+    ];
+
     public function list()
     {
         return $this->all();
