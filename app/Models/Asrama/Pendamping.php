@@ -3,6 +3,7 @@
 namespace App\Models\Asrama;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Pendamping extends Model
 {
@@ -45,6 +46,42 @@ class Pendamping extends Model
                     ['asrama_pendamping.id_kamar', $id_kamar],
                 ]);
         })->get();
+    }
+
+    public function findByIdMahasiswa($id_mahasiswa)
+    {
+        $penghuni = DB::table('asrama_penghuni')
+            ->where('id_mahasiswa', $id_mahasiswa)->get();
+
+        if (count($penghuni) == 0) return [];
+
+        $id_kamar = $penghuni[0]->id_kamar;
+        $pendamping = $this->findByKamarId($id_kamar);
+
+        if (count($pendamping) == 0) return [];
+
+        $id_sr = $pendamping[0]->id_sr;
+        $sr = DB::table('asrama_sr')->join('sm_mahasiswa', function ($join) use ($id_sr) {
+            $join->on('asrama_sr.nim', '=', 'sm_mahasiswa.nim')
+                ->where('asrama_sr.id_sr', $id_sr);
+        })->get();
+
+        if (count($sr) == 0) return [];
+
+        $id_mahasiswa = $sr[0]->id_mahasiswa;
+        $penghuni = DB::table('asrama_penghuni')->where('id_mahasiswa', $id_mahasiswa)->get();
+
+        if (count($penghuni) == 0) return ['kamar' => null, 'sr' => $sr[0]];
+
+        $id_kamar = $penghuni[0]->id_kamar;
+        $kamar = DB::table('asrama_kamar')->join('asrama_gedung', function ($join) use ($id_kamar) {
+           $join->on('asrama_kamar.id_gedung', '=', 'asrama_gedung.id_gedung')
+               ->where('id_kamar', $id_kamar);
+        })->get();
+
+        if (count($kamar) == 0) return ['kamar' => null, 'sr' => $sr[0]];
+
+        return ['kamar' => $kamar[0], 'sr' => $sr[0]];
     }
 
     public function new($data)

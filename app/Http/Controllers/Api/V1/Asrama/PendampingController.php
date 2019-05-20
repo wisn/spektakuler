@@ -124,4 +124,14 @@ class PendampingController extends Controller
 
         return false;
     }
+
+    public function mahasiswa($id_mahasiswa)
+    {
+        $pendamping = $this->pendamping->findByIdMahasiswa($id_mahasiswa);
+
+        return response()->json([
+            'success' => true,
+            'data' => $pendamping,
+        ], 200);
+    }
 }

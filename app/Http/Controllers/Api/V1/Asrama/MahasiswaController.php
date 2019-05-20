@@ -47,11 +47,19 @@ class MahasiswaController extends Controller
             $mahasiswa = $this->mahasiswa->findByUsername($username);
             $isExists = count($mahasiswa) == 1;
 
-            if ($isExists && $mahasiswa[0]['password'] == $password) {
-                return response()->json([
-                    'success' => true,
-                    'data' => $mahasiswa,
-                ], 200);
+            if ($isExists) {
+                $isSr = $this->mahasiswa->isSr($mahasiswa[0]->id_mahasiswa);
+                if (!$isSr && $mahasiswa[0]['password'] == $password) {
+                    return response()->json([
+                        'success' => true,
+                        'data' => $mahasiswa,
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Username atau password salah',
+                    ], 404);
+                }
             } else {
                 return response()->json([
                     'success' => false,

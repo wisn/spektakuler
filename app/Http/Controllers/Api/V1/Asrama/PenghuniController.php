@@ -24,6 +24,22 @@ class PenghuniController extends Controller
         ], 200);
     }
 
+    public function listMahasiswa($id_mahasiswa)
+    {
+        return response()->json([
+            'success' => true,
+            'data' => $this->penghuni->listMahasiswa($id_mahasiswa),
+        ], 200);
+    }
+
+    public function detail($id_mahasiswa)
+    {
+        return response()->json([
+            'success' => true,
+            'data' => $this->penghuni->detail($id_mahasiswa),
+        ], 200);
+    }
+
     public function new(Request $request)
     {
         $id_mahasiswa = $request->input('id_mahasiswa');

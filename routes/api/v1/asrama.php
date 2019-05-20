@@ -79,17 +79,23 @@ function AsramaRouter($router) {
         $router->group(['prefix' => 'penghuni'], function () use ($router) {
             $router->get('/list', 'PenghuniController@list');
 
+            $router->get('/list/mahasiswa/{id_mahasiswa}', 'PenghuniController@listMahasiswa');
+
             $router->post('/new', 'PenghuniController@new');
 
             $router->delete('/{id_mahasiswa}/remove', 'PenghuniController@remove');
 
             $router->get('/kamar/{id_mahasiswa}', 'PenghuniController@showKamar');
+
+            $router->get('/detail/{id_mahasiswa}', 'PenghuniController@detail');
         });
 
         $router->group(['prefix' => 'pendamping'], function () use ($router) {
             $router->get('/list', 'PendampingController@list');
 
             $router->post('/new', 'PendampingController@new');
+
+            $router->get('/mahasiswa/{id_mahasiswa}', 'PendampingController@mahasiswa');
 
             $router->get('/{id_sr}/list', 'PendampingController@listBySr');
 
