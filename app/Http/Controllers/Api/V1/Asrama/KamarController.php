@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Asrama;
 use Illuminate\Http\Request;
 use App\Models\Asrama\Kamar;
 use App\Models\Asrama\Gedung;
+use App\Models\Asrama\Penghuni;
 
 class KamarController extends Controller
 {
@@ -12,6 +13,7 @@ class KamarController extends Controller
     {
         $this->kamar = new Kamar;
         $this->gedung = new Gedung;
+        $this->penghuni = new Penghuni;
     }
 
     public function list()
@@ -156,6 +158,8 @@ class KamarController extends Controller
             $gedung = $this->gedung->findById($kamar->id_gedung)[0];
             $gedung = ['tersisa' => $gedung->tersisa + 1];
             $this->gedung->where('id_gedung', $kamar->id_gedung)->update($gedung);
+
+            $penghuni = $this->penghuni->where('id_kamar', $id_kamar)->delete();
 
             return response()->json([
               'success' => true,

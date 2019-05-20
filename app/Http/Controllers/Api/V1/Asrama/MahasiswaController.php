@@ -47,8 +47,9 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function show($username) {
-        $mahasiswa = $this->mahasiswa->findByUsername($username);
+    public function show($id_mahasiswa)
+    {
+        $mahasiswa = $this->mahasiswa->findById($id_mahasiswa);
         $isExists = count($mahasiswa) == 1;
 
         if ($isExists) {

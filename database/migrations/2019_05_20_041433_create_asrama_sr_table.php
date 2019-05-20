@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsramaMahasiswaTable extends Migration
+class CreateAsramaSrTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,26 @@ class CreateAsramaMahasiswaTable extends Migration
      */
     public function up()
     {
-        Schema::create('asrama_mahasiswa', function (Blueprint $table) {
-            $table->integer('id', true, true)
+        Schema::create('asrama_sr', function (Blueprint $table) {
+            $table->integer('id_sr', true, true)
                 ->unsigned();
-            $table->integer('id_mahasiswa')
-                ->nullable(false)
-                ->unsigned();
+            $table->integer('nim')
+                ->nullable(false);
             $table->string('username', 16)
                 ->nullable(false);
             $table->string('password')
                 ->nullable(false);
+            $table->integer('id_gedung')
+                ->nullable(false)
+                ->default(0);
             $table->timestamps();
 
-            $table->unique(['username']);
+            $table->unique(['nim']);
         });
 
-        Schema::table('asrama_mahasiswa', function (Blueprint $table) {
-            $table->foreign('id_mahasiswa')
-                ->references('id_mahasiswa')
+        Schema::table('asrama_sr', function (Blueprint $table) {
+            $table->foreign('nim')
+                ->references('nim')
                 ->on('sm_mahasiswa');
         });
     }
@@ -42,6 +44,6 @@ class CreateAsramaMahasiswaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asrama_mahasiswa');
+        Schema::dropIfExists('asrama_sr');
     }
 }

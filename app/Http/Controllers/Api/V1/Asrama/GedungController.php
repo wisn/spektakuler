@@ -45,6 +45,13 @@ class GedungController extends Controller
         ]);
     }
 
+    public function listKamarSr($id_gedung) {
+        return response()->json([
+            'success' => true,
+            'data' => $this->gedung->listKamarSr($id_gedung),
+        ]);
+    }
+
     public function show($id_gedung) {
         $gedung = $this->gedung->findById($id_gedung);
         $isExists = count($gedung) == 1;

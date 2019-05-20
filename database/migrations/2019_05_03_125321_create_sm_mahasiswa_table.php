@@ -19,6 +19,8 @@ class CreateSmMahasiswaTable extends Migration
                 ->nullable(false);
             $table->string('nama', 255)
                 ->nullable(false);
+            $table->set('gender', ['L', 'P'])
+                ->nullable(false);
             $table->integer('angkatan')
                 ->nullable(false);
             $table->set('fakultas', ['FIF', 'FTE'])

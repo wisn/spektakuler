@@ -11,6 +11,7 @@ class Mahasiswa extends Model
     protected $fillable = [
         'nim',
         'nama',
+        'gender',
         'angkatan',
         'fakultas',
         'program_studi',
@@ -22,10 +23,16 @@ class Mahasiswa extends Model
         return $this->all();
     }
 
+    public function findByNIM($nim)
+    {
+        return $this->where('nim', $nim)->limit(1)->get();
+    }
+
     public function new($data)
     {
         $this->nim = $data['nim'];
         $this->nama = $data['nama'];
+        $this->gender = $data['gender'];
         $this->angkatan = $data['angkatan'];
         $this->fakultas = $data['fakultas'];
         $this->program_studi = $data['program_studi'];

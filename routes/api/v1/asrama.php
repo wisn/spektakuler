@@ -17,6 +17,10 @@ function AsramaRouter($router) {
 
             $router->get('/list/{id_gedung}/kamar', 'GedungController@listKamar');
 
+            $router->get('/list/{id_gedung}/kamar/sr', 'GedungController@listKamarSr');
+
+            $router->get('/list/{id_gedung}/sr', 'GedungController@listSr');
+
             $router->post('/new', 'GedungController@new');
 
             $router->get('/{id_gedung}/show', 'GedungController@show');
@@ -40,10 +44,40 @@ function AsramaRouter($router) {
             $router->delete('/{id_kamar}/remove', 'KamarController@remove');
         });
 
+        $router->group(['prefix' => 'sr'], function () use ($router) {
+            $router->get('/list', 'SeniorResidenceController@list');
+
+            $router->get('/list/assigned', 'SeniorResidenceController@listAssigned');
+
+            $router->get('/list/unassigned', 'SeniorResidenceController@listUnassigned');
+
+            $router->post('/new', 'SeniorResidenceController@new');
+
+            $router->get('/{id_sr}/show', 'SeniorResidenceController@show');
+
+            $router->put('/{id_sr}/update', 'SeniorResidenceController@update');
+
+            $router->delete('/{id_sr}/remove', 'SeniorResidenceController@remove');
+
+            $router->post('/login', 'SeniorResidenceController@login');
+        });
+
         $router->group(['prefix' => 'mahasiswa'], function () use ($router) {
             $router->get('/list', 'MahasiswaController@list');
 
+            $router->get('/{id_mahasiswa}/show', 'MahasiswaController@show');
+
             $router->post('/login', 'MahasiswaController@login');
+        });
+
+        $router->group(['prefix' => 'penghuni'], function () use ($router) {
+            $router->get('/list', 'PenghuniController@list');
+
+            $router->post('/new', 'PenghuniController@new');
+
+            $router->delete('/{id_mahasiswa}/remove', 'PenghuniController@remove');
+
+            $router->get('/kamar/{id_mahasiswa}', 'PenghuniController@showKamar');
         });
     });
 }

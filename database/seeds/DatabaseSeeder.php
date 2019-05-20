@@ -29,5 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call('LACNilaiSeeder');
         $this->call('HrStaffSeeder');
         $this->call('AsramaStaffSeeder');
+        $this->call('SmMahasiswaSeeder');
+        $this->call('AsramaSrSeeder');
+        $this->call('AsramaMahasiswaSeeder');
     }
 }
