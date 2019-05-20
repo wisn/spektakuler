@@ -20,6 +20,20 @@ class MahasiswaController extends Controller
         ], 200);
     }
 
+    public function listDetail() {
+        return response()->json([
+            'success' => true,
+            'data' => $this->mahasiswa->listDetail(),
+        ], 200);
+    }
+
+    public function isSr($id_mahasiswa) {
+        return response()->json([
+            'success' => true,
+            'data' => $this->mahasiswa->isSr($id_mahasiswa),
+        ], 200);
+    }
+
     public function login(Request $request) {
         $username = $request->input('username');
         $password = $request->input('password');

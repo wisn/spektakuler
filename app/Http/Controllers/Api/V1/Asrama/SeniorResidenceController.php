@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api\V1\Asrama;
 
 use Illuminate\Http\Request;
+use App\Models\Asrama\Pendamping;
+use App\Models\Asrama\Penghuni;
+use App\Models\Asrama\Kamar;
 use App\Models\Asrama\SeniorResidence;
 use App\Models\StudentManagement\Mahasiswa;
 
@@ -12,6 +15,9 @@ class SeniorResidenceController extends Controller
     {
         $this->sr = new SeniorResidence;
         $this->mahasiswa = new Mahasiswa;
+        $this->penghuni = new Penghuni;
+        $this->pendamping = new Pendamping;
+        $this->kamar = new Kamar;
     }
 
     public function list()
@@ -156,9 +162,18 @@ class SeniorResidenceController extends Controller
                 ];
                 $this->sr->where('id_sr', $id_sr)->update($data);
 
+                if ($id_gedung == 0) {
+                    $this->pendamping->where('id_sr', $sr->id_sr)->delete();
+                    $query = $this->penghuni->where('id_mahasiswa', $sr->id_mahasiswa);
+                    $id_kamar = $query->get()[0]->id_kamar;
+                    $query->delete();
+                    $kamar = $this->kamar->findById($id_kamar)[0];
+                    $this->kamar->where('id_kamar', $id_kamar)->update(['tersisa' => $kamar->tersisa + 1]);
+                }
+
                 return response()->json([
                     'success' => true,
-                    'data' => $data,
+                    'data' => $sr,
                 ], 200);
             }
         } else {

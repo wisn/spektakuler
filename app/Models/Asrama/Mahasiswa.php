@@ -3,6 +3,7 @@
 namespace App\Models\Asrama;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Mahasiswa extends Model
 {
@@ -21,6 +22,28 @@ class Mahasiswa extends Model
     public function list()
     {
         return $this->all();
+    }
+
+    public function listDetail()
+    {
+        return $this->join('sm_mahasiswa', function ($join) {
+            $join->on('asrama_mahasiswa.id_mahasiswa', '=', 'sm_mahasiswa.id_mahasiswa');
+        })->get();
+    }
+
+    public function isSr($id_mahasiswa)
+    {
+        $mahasiswa = DB::table('sm_mahasiswa')->where('id_mahasiswa', $id_mahasiswa)->get();
+        if (count($mahasiswa) == 0) return false;
+
+        $nim = $mahasiswa[0]->nim;
+
+        $sr = DB::table('asrama_sr')->join('sm_mahasiswa', function ($join) use ($nim) {
+            $join->on('asrama_sr.nim', '=', 'sm_mahasiswa.nim')
+                ->where('sm_mahasiswa.nim', $nim);
+        })->get();
+
+        return count($sr) == 1;
     }
 
     public function findByUsername($username)

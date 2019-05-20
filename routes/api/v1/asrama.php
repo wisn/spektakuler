@@ -67,7 +67,11 @@ function AsramaRouter($router) {
         $router->group(['prefix' => 'mahasiswa'], function () use ($router) {
             $router->get('/list', 'MahasiswaController@list');
 
+            $router->get('/list/detail', 'MahasiswaController@listDetail');
+
             $router->get('/{id_mahasiswa}/show', 'MahasiswaController@show');
+
+            $router->get('/{id_mahasiswa}/is-sr', 'MahasiswaController@isSr');
 
             $router->post('/login', 'MahasiswaController@login');
         });
